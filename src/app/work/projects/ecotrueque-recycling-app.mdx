@@ -1,0 +1,51 @@
+---
+title: "Ecotrueque – Internal Recycling Reward System"
+publishedAt: "2023-11-10"
+summary: "An internal application developed to digitize the Ecotrueque recycling program for Parque Jaime Duque collaborators, automating material tracking and benefit redemption."
+images:
+  - "/images/projects/ecotrueque/cover-01.jpeg"
+  - "/images/projects/ecotrueque/cover-02.png"
+  - "/images/projects/ecotrueque/cover-03.jpeg"
+  - "/images/projects/ecotrueque/cover-04.jpeg"
+team:
+  - name: "Brad Moyetones"
+    role: "Fullstack Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/brad-moyetones/"
+---
+
+## Overview
+
+Ecotrueque is an internal recycling initiative at **Parque Jaime Duque**, where employees can exchange recyclable materials for points and redeemable benefits like cinema tickets, snacks, and lunch bonuses.
+
+Previously, the program relied on Excel spreadsheets to manually track contributions. As participation grew and the number of entries during open days increased, this manual system became unsustainable and prone to errors. This application was created to centralize and automate the entire process.
+
+## Key Features
+
+- **Material Registration**: Staff can log recyclable material deliveries during Ecotrueque days. Each material type is associated with a specific point value and weight.
+- **User Accounts**: Collaborators have login credentials to view their personal dashboards, showing accumulated points, total weight delivered, and history.
+- **Point Redemption System**: Employees can exchange their points for benefits such as movie tickets, snacks, or lunch coupons directly through the platform.
+- **Real-Time Reports for Partners**: The system generates structured reports for **Prodensa**, the program’s environmental partner, to show impact metrics.
+- **Lunch System Integration**: When employees register for lunch, the system automatically deducts 250g from their recycling balance, streamlining the benefits logic between departments.
+
+## Technologies Used
+
+- **PHP (Slim Framework)**: Backend routing and API endpoints.
+- **Eloquent ORM**: Database modeling and relationships.
+- **React + TypeScript + Vite**: Frontend for both users and administrators.
+- **MySQL**: Database for materials, points, users, and transaction history.
+- **Tailwind CSS**: For a clean and responsive UI.
+- **Charting Library (Recharts)**: For visual data breakdowns in the admin panel.
+
+## Challenges and Learnings
+
+The biggest challenge was designing a flexible system that could scale with user growth and support integrations with other internal tools. Mapping real-world recycling rules into digital logic (points by weight, benefit tracking, etc.) required close coordination with HR and sustainability teams.
+
+Integrating the Ecotrueque platform with the existing lunch system also brought performance considerations, as both systems had to communicate and synchronize real-time actions like balance deductions.
+
+## Outcome
+
+Ecotrueque is now a fully digital platform used by all park collaborators. It reduced admin workload, eliminated manual errors, and made participation in the recycling program more accessible and engaging.
+
+The automatic integration with the lunch system alone saved hours of manual tracking by the payroll team, while also increasing transparency and accountability for both employees and management.
+
