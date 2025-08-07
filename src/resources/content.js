@@ -137,7 +137,7 @@ const about = {
             height: 9,
           },
           {
-            src: "/images/projects/ecotrueque/cover-01.png",
+            src: "/images/projects/ecotrueque/cover-01.jpeg",
             alt: "Ecotrueque project",
             width: 16,
             height: 9,
