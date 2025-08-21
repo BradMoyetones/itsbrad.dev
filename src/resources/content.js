@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Software Engineer",
+  role: "Systems Engineer",
   avatar: "/images/avatar.jpg",
   email: "brad.moyetones@gmail.com",
   location: "America/Bogota", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -90,17 +90,16 @@ const about = {
   },
   calendar: {
     display: false,
-    link: "https://cal.com", // puedes actualizar con tu link real
+    link: "https://cal.com", // you can update with your real link
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        I'm a systems developer passionate about solving internal organizational challenges through custom software.
-        I started as an intern at Parque Jaime Duque and quickly transitioned into a full-time role, where I've led the development
-        of several critical internal applications used daily by staff. I specialize in backend and fullstack development with technologies like
-        Node.js, Next.js, React, and more.
+        I am a systems developer passionate about creating solutions that optimize internal processes.  
+        I started as an intern at Parque Jaime Duque and quickly moved into a full-time role.  
+        Today I combine my professional experience and personal projects to grow as a backend and fullstack developer.
       </>
     ),
   },
@@ -114,19 +113,10 @@ const about = {
         role: "Systems Developer",
         achievements: [
           <>
-            Developed a lunch registration system to manage employee food benefits, including a claims module,
-            real-time statistics, and predictive reports to optimize meal preparation logistics.
-          </>,
-          <>
-            Created the Ecotrueque platform to digitize recycling contributions and employee incentive redemptions,
-            integrating it with the lunch system to automatically apply benefit discounts based on weight contributed.
-          </>,
-          <>
-            Built a digital library to manage book inventory, availability, and loan tracking, replacing manual Excel workflows.
-          </>,
-          <>
-            Developed a shift scheduling tool for park gate staff, allowing administrators to assign shifts and employees
-            to view their weekly routes through a modular interface.
+            At Parque Jaime Duque I have had the opportunity to design solutions that directly impact the daily operations 
+            of the staff. Some of these include a meal management system with reports and analytics, the Ecotrueque 
+            platform that promotes recycling through benefits, a digital library that replaced manual Excel processes, 
+            and a scheduling tool that streamlined staff shift organization.
           </>,
         ],
         images: [
@@ -150,16 +140,10 @@ const about = {
         role: "Personal Project – Desktop Music App",
         achievements: [
           <>
-            Designed and implemented an application to download Creative Commons licensed multimedia content
-            using only the resource URL, leveraging YT-DLP and FFMPEG for format conversion.
-          </>,
-          <>
-            Used Shadcn/ui to create a modern and consistent interface, along with SQLite as a local database
-            to manage all downloaded media, using Drizzle as an ORM to simplify SQL queries.
-          </>,
-          <>
-            Implemented the app as a desktop software using Electron.js and React, achieving OS integration
-            for storage and management of downloaded files.
+            BradTunes started as a personal project where I combined several of my passions: music, programming, 
+            and user experience. I built a desktop application with Electron and React that allows users to download 
+            and organize multimedia content, integrating format conversion with YT-DLP and FFMPEG, a local database 
+            with SQLite, and a modern interface built with Shadcn/ui.
           </>,
         ],
         images: [
@@ -177,18 +161,9 @@ const about = {
         role: "Personal Project – Knowledge Platform",
         achievements: [
           <>
-            Developed a fullstack application with Next.js, PostgreSQL, and Prisma
-            focused on content management, learning, and collaborative writing.
-          </>,
-          <>
-            Integrated secure authentication with NextAuth (Google and credentials),
-            email verification, and advanced session management.
-          </>,
-          <>
-            Implemented a rich-text editor using Plate.js for notes and articles with dynamic formatting.
-          </>,
-          <>
-            Used Shadcn/ui and Tailwind to build a modern, modular, and fully responsive interface.
+            I am currently developing Noesis, a platform designed for learning and collaborative writing.  
+            It is a fullstack application built with Next.js and PostgreSQL, integrating secure authentication 
+            with NextAuth, a rich editor with Plate.js, and a modular, responsive design with Shadcn/ui and Tailwind.
           </>,
         ],
         images: [
@@ -204,7 +179,7 @@ const about = {
             width: 16,
             height: 9,
           },
-        ],
+        ]
       },
     ],
   },
@@ -213,57 +188,46 @@ const about = {
     title: "Education",
     institutions: [
       {
-        name: "Self-directed Learning",
+        name: "Self-taught learning",
         description: <>Expanded my knowledge in modern web technologies such as React, Node.js, and Next.js through personal projects and self-study.</>,
       },
       {
-        name: "CUN University - National Unified Higher Education Corporation (Feb 29, 2024 - Jun 30, 2025)",
+        name: "Universidad CUN - Corporación Unificada Nacional de Educación Superior (Feb 29, 2024 - Jun 30, 2025)",
         description: <>Studied Systems Engineering.</>,
       },
       {
-        name: "SENA - National Learning Service (Jul 19, 2021 - Jul 19, 2023)",
-        description: <>Studied ADSI: Analysis and Development of Information Systems. This marked the beginning of my career as a fullstack developer.</>,
+        name: "SENA - Servicio Nacional de Aprendizaje (Jul 19, 2021 - Jul 19, 2023)",
+        description: <>Studied the ADSI program: Analysis and Development of Information Systems. This was the beginning of my career as a fullstack developer.</>,
       },
     ],
   },
   technical: {
     display: true,
-    title: "Technical Skills",
+    title: "Skills",
     skills: [
       {
-        title: "Node.js & Express",
-        description: <>Built backend systems and APIs for internal applications, including authentication and data processing.</>,
+        title: "Technologies",
+        description: (
+          <>
+            Node.js, Express, React, Next.js, Tailwind, PostgreSQL, MySQL, Prisma, SQLite,  
+            PHP (Laravel & Slim), system integration, and API development.
+          </>
+        ),
         images: [],
       },
       {
-        title: "React & Next.js",
-        description: <>Developed modular interfaces and fullstack solutions using modern tools like Next.js, Tailwind, and SWR.</>,
-        images: [],
-      },
-      {
-        title: "PostgreSQL & SQL",
-        description: <>Designed relational schemas and wrote efficient queries for high-volume internal data systems.</>,
-        images: [],
-      },
-      {
-        title: "System Integration",
-        description: <>Connected internal tools (e.g., lunch system + Ecotrueque) to automate workflows and reduce manual effort.</>,
-        images: [],
-      },
-      {
-        title: "PHP & Laravel",
-        description: <>Built robust web applications with Laravel, including CRUD systems, authentication, and RESTful API management.</>,
-        images: [],
-      },
-      {
-        title: "PHP & Slim Framework",
-        description: <>Developed lightweight microservices and APIs using Slim, focusing on simplicity, performance, and scalability.</>,
+        title: "Soft Skills",
+        description: (
+          <>
+            I am collaborative, responsible, and passionate about development.  
+            I work with vocation, enjoy problem-solving, and adapt quickly to new challenges.
+          </>
+        ),
         images: [],
       },
     ],
   },
 };
-
 
 // const about = {
 //   path: "/about",

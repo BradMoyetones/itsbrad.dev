@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Ingeniero de Software",
+  role: "Ingeniero de Sistemas",
   avatar: "/images/avatar.jpg",
   email: "brad.moyetones@gmail.com",
   location: "America/Bogota", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -97,10 +97,9 @@ const about = {
     title: "Introducción",
     description: (
       <>
-        Soy un desarrollador de sistemas apasionado por resolver desafíos organizacionales mediante software a la medida.  
-        Empecé como practicante en el Parque Jaime Duque y rápidamente pasé a un rol de tiempo completo, liderando el desarrollo
-        de varias aplicaciones internas críticas usadas a diario por el personal.  
-        Me especializo en desarrollo backend y fullstack con tecnologías como Node.js, Next.js, React, entre otras.
+        Soy un desarrollador de sistemas apasionado por crear soluciones que optimizan procesos internos.  
+        Empecé como practicante en el Parque Jaime Duque y rápidamente asumí un rol de tiempo completo.  
+        Hoy combino mi experiencia profesional y mis proyectos personales para crecer como desarrollador backend y fullstack.
       </>
     ),
   },
@@ -114,19 +113,10 @@ const about = {
         role: "Desarrollador de Sistemas",
         achievements: [
           <>
-            Desarrollé un sistema de registro de almuerzos para gestionar beneficios alimenticios de los empleados, incluyendo módulo de reclamaciones,
-            estadísticas en tiempo real y reportes predictivos para optimizar la logística de preparación.
-          </>,
-          <>
-            Creé la plataforma Ecotrueque para digitalizar aportes de reciclaje y redención de incentivos de los empleados, integrándola con el sistema de almuerzos
-            para automatizar descuentos de beneficios según el peso aportado.
-          </>,
-          <>
-            Construí una biblioteca digital para administrar inventario de libros, disponibilidad y seguimiento de préstamos, reemplazando flujos manuales en Excel.
-          </>,
-          <>
-            Desarrollé una herramienta de programación de turnos para el personal de portería del parque, permitiendo a los administradores asignar turnos y a los empleados
-            consultar su ruta semanal desde una interfaz modular.
+            Durante mi tiempo en el Parque Jaime Duque he tenido la oportunidad de crear soluciones que impactan directamente
+            en la operación diaria del personal. Entre ellas, un sistema para gestionar almuerzos con estadísticas y reportes,
+            la plataforma Ecotrueque que incentiva el reciclaje mediante beneficios, una biblioteca digital que reemplazó los
+            procesos manuales en Excel, y una herramienta de turnos que facilitó la organización del personal de portería.
           </>,
         ],
         images: [
@@ -150,19 +140,9 @@ const about = {
         role: "Proyecto Personal – Desktop App de Música",
         achievements: [
           <>
-            Diseñé e implementé una aplicación que permite descargar contenido
-            multimedia con licencia Creative Commons usando únicamente la URL del
-            recurso, apoyándome en YT-DLP y FFMPEG para la conversión entre formatos.
-          </>,
-          <>
-            Utilicé Shadcn/ui para crear una interfaz moderna y consistente, junto con
-            SQLite como base de datos local para gestionar toda la multimedia
-            descargada, usando Drizzle como ORM para simplificar las consultas SQL.
-          </>,
-          <>
-            Implementé la aplicación como un software de escritorio usando Electron.js
-            y React, logrando la integración con el sistema operativo para el
-            almacenamiento y manejo de los archivos descargados.
+            BradTunes nació como un proyecto personal donde uní varias de mis pasiones: la música, la programación y la experiencia de usuario.
+            Diseñé una aplicación de escritorio con Electron y React que permite descargar y organizar contenido multimedia,
+            integrando conversión de formatos con YT-DLP y FFMPEG, una base de datos local con SQLite y una interfaz moderna construida con Shadcn/ui.
           </>,
         ],
         images: [
@@ -180,20 +160,9 @@ const about = {
         role: "Proyecto Personal – Plataforma de Conocimiento",
         achievements: [
           <>
-            Desarrollo de una aplicación fullstack con Next.js, PostgreSQL y Prisma
-            orientada a la gestión de contenido, aprendizaje y escritura colaborativa.
-          </>,
-          <>
-            Integración de autenticación segura con NextAuth (Google y credenciales),
-            verificación por correo electrónico y manejo avanzado de sesiones.
-          </>,
-          <>
-            Implementación de un editor enriquecido con Plate.js para notas y artículos
-            con formato dinámico.
-          </>,
-          <>
-            Uso de Shadcn/ui y Tailwind para construir una interfaz moderna, modular y
-            totalmente responsive.
+            Actualmente estoy desarrollando Noesis, una plataforma pensada para el aprendizaje y la escritura colaborativa.
+            Se trata de una aplicación fullstack con Next.js y PostgreSQL, que integra autenticación segura con NextAuth,
+            un editor enriquecido con Plate.js y un diseño modular y responsive con Shadcn/ui y Tailwind.
           </>,
         ],
         images: [
@@ -233,36 +202,26 @@ const about = {
   },
   technical: {
     display: true,
-    title: "Habilidades Técnicas",
+    title: "Habilidades",
     skills: [
       {
-        title: "Node.js & Express",
-        description: <>Construcción de sistemas backend y APIs para aplicaciones internas, incluyendo autenticación y procesamiento de datos.</>,
+        title: "Tecnologías",
+        description: (
+          <>
+            Node.js, Express, React, Next.js, Tailwind, PostgreSQL, MySQL, Prisma, SQLite,  
+            PHP (Laravel & Slim), integración de sistemas y construcción de APIs.
+          </>
+        ),
         images: [],
       },
       {
-        title: "React & Next.js",
-        description: <>Desarrollo de interfaces modulares y soluciones fullstack con herramientas modernas como Next.js, Tailwind y SWR.</>,
-        images: [],
-      },
-      {
-        title: "PostgreSQL & SQL",
-        description: <>Diseño de esquemas relacionales y escritura de consultas eficientes para sistemas con alto volumen de datos internos.</>,
-        images: [],
-      },
-      {
-        title: "Integración de sistemas",
-        description: <>Conexión de herramientas internas (ej. sistema de almuerzos + Ecotrueque) para automatizar flujos de trabajo y reducir esfuerzo manual.</>,
-        images: [],
-      },
-      {
-        title: "PHP & Laravel",
-        description: <>Construcción de aplicaciones web robustas con Laravel, incluyendo sistemas CRUD, autenticación y manejo de APIs RESTful.</>,
-        images: [],
-      },
-      {
-        title: "PHP & Slim Framework",
-        description: <>Desarrollo de microservicios y APIs ligeras usando Slim, con foco en simplicidad, rendimiento y escalabilidad.</>,
+        title: "Habilidades blandas",
+        description: (
+          <>
+            Soy colaborativo, responsable y apasionado por el desarrollo.  
+            Trabajo con vocación, disfruto resolver problemas y me adapto fácilmente a nuevos retos.
+          </>
+        ),
         images: [],
       },
     ],

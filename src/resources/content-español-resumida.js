@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Ingeniero de Software",
+  role: "Ingeniero de Sistemas",
   avatar: "/images/avatar.jpg",
   email: "brad.moyetones@gmail.com",
   location: "America/Bogota", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -113,13 +113,13 @@ const about = {
         role: "Desarrollador de Sistemas",
         achievements: [
           <>
-            Lideré el desarrollo de sistemas internos como la gestión de almuerzos, la plataforma Ecotrueque,
-            una biblioteca digital y una herramienta de programación de turnos y entre otros proyectos, mejorando la eficiencia operativa del parque.
+            Durante mi tiempo en el Parque Jaime Duque he tenido la oportunidad de crear soluciones que impactan directamente
+            en la operación diaria del personal. Entre ellas, un sistema para gestionar almuerzos con estadísticas y reportes,
+            la plataforma Ecotrueque que incentiva el reciclaje mediante beneficios, una biblioteca digital que reemplazó los
+            procesos manuales en Excel, y una herramienta de turnos que facilitó la organización del personal de portería.
           </>,
         ],
-        images: [
-          
-        ],
+        images: [],
       },
       {
         company: "BradTunes",
@@ -127,13 +127,12 @@ const about = {
         role: "Proyecto Personal – Desktop App de Música",
         achievements: [
           <>
-            Creé una app de escritorio con Electron y React para gestionar descargas multimedia,
-            integrando conversión de formatos, base de datos local y una interfaz moderna.
+            BradTunes nació como un proyecto personal donde uní varias de mis pasiones: la música, la programación y la experiencia de usuario.
+            Diseñé una aplicación de escritorio con Electron y React que permite descargar y organizar contenido multimedia,
+            integrando conversión de formatos con YT-DLP y FFMPEG, una base de datos local con SQLite y una interfaz moderna construida con Shadcn/ui.
           </>,
         ],
-        images: [
-          
-        ],
+        images: [],
       },
       {
         company: "Noesis",
@@ -141,13 +140,12 @@ const about = {
         role: "Proyecto Personal – Plataforma de Conocimiento",
         achievements: [
           <>
-            Desarrollo de una plataforma fullstack con Next.js y PostgreSQL para escritura colaborativa,
-            con autenticación segura, editor enriquecido y diseño responsive.
+            Actualmente estoy desarrollando Noesis, una plataforma pensada para el aprendizaje y la escritura colaborativa.
+            Se trata de una aplicación fullstack con Next.js y PostgreSQL, que integra autenticación segura con NextAuth,
+            un editor enriquecido con Plate.js y un diseño modular y responsive con Shadcn/ui y Tailwind.
           </>,
         ],
-        images: [
-          
-        ],
+        images: [],
       },
     ],
   },
@@ -177,7 +175,7 @@ const about = {
         title: "Tecnologías",
         description: (
           <>
-            Node.js, Express, React, Next.js, Tailwind, PostgreSQL, Prisma, SQLite,  
+            Node.js, Express, React, Next.js, Tailwind, PostgreSQL, MySQL, Prisma, SQLite,  
             PHP (Laravel & Slim), integración de sistemas y construcción de APIs.
           </>
         ),
