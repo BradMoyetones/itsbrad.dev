@@ -110,7 +110,7 @@ const about = {
     experiences: [
       {
         company: "Parque Jaime Duque",
-        timeframe: "2022 - Presente",
+        timeframe: "2023 - Presente",
         role: "Desarrollador de Sistemas",
         achievements: [
           <>

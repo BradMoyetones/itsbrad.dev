@@ -110,35 +110,97 @@ const about = {
     experiences: [
       {
         company: "Parque Jaime Duque",
-        timeframe: "2022 - Present",
+        timeframe: "2023 - Present",
         role: "Systems Developer",
         achievements: [
           <>
-            Developed a lunch registration system to manage employee meal benefits, including a claim module,
-            real-time statistics, and predictive reports to optimize preparation logistics.
+            Developed a lunch registration system to manage employee food benefits, including a claims module,
+            real-time statistics, and predictive reports to optimize meal preparation logistics.
           </>,
           <>
-            Created the Ecotrueque platform to digitize recycling contributions and incentive redemption for employees,
-            integrating it with the lunch system to automate benefit deductions based on weight.
+            Created the Ecotrueque platform to digitize recycling contributions and employee incentive redemptions,
+            integrating it with the lunch system to automatically apply benefit discounts based on weight contributed.
           </>,
           <>
-            Built a digital library application to manage book inventory, availability, and loan tracking, replacing manual Excel workflows.
+            Built a digital library to manage book inventory, availability, and loan tracking, replacing manual Excel workflows.
           </>,
           <>
-            Developed a scheduling tool for the park's gatekeeping staff, allowing administrators to assign shifts and
-            employees to view their weekly rota via a modular interface.
+            Developed a shift scheduling tool for park gate staff, allowing administrators to assign shifts and employees
+            to view their weekly routes through a modular interface.
           </>,
         ],
         images: [
           {
             src: "/images/projects/lunches/cover-01.png",
-            alt: "Luches project",
+            alt: "Lunch Project",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/ecotrueque/cover-01.jpeg",
-            alt: "Ecotrueque project",
+            alt: "Ecotrueque Project",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        company: "BradTunes",
+        timeframe: "2024 - Present",
+        role: "Personal Project – Desktop Music App",
+        achievements: [
+          <>
+            Designed and implemented an application to download Creative Commons licensed multimedia content
+            using only the resource URL, leveraging YT-DLP and FFMPEG for format conversion.
+          </>,
+          <>
+            Used Shadcn/ui to create a modern and consistent interface, along with SQLite as a local database
+            to manage all downloaded media, using Drizzle as an ORM to simplify SQL queries.
+          </>,
+          <>
+            Implemented the app as a desktop software using Electron.js and React, achieving OS integration
+            for storage and management of downloaded files.
+          </>,
+        ],
+        images: [
+          {
+            src: "/images/projects/bradtunes/cover-02.jpeg",
+            alt: "BradTunes Project",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        company: "Noesis",
+        timeframe: "2025 - Present",
+        role: "Personal Project – Knowledge Platform",
+        achievements: [
+          <>
+            Developed a fullstack application with Next.js, PostgreSQL, and Prisma
+            focused on content management, learning, and collaborative writing.
+          </>,
+          <>
+            Integrated secure authentication with NextAuth (Google and credentials),
+            email verification, and advanced session management.
+          </>,
+          <>
+            Implemented a rich-text editor using Plate.js for notes and articles with dynamic formatting.
+          </>,
+          <>
+            Used Shadcn/ui and Tailwind to build a modern, modular, and fully responsive interface.
+          </>,
+        ],
+        images: [
+          {
+            src: "/images/projects/noesis/cover-01.jpeg",
+            alt: "Noesis Project",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/noesis/cover-02.jpeg",
+            alt: "Noesis Project",
             width: 16,
             height: 9,
           },
@@ -148,40 +210,54 @@ const about = {
   },
   studies: {
     display: true,
-    title: "Studies",
+    title: "Education",
     institutions: [
       {
-        name: "Self-taught learning",
-        description: <>Expanded skills in modern web technologies like React, Node.js, and Next.js through self-directed projects.</>,
+        name: "Self-directed Learning",
+        description: <>Expanded my knowledge in modern web technologies such as React, Node.js, and Next.js through personal projects and self-study.</>,
       },
       {
-        name: "Universidad CUN - Corporación unificada nacional de educación superior",
-        description: <>Studied systems engineering.</>,
+        name: "CUN University - National Unified Higher Education Corporation (Feb 29, 2024 - Jun 30, 2025)",
+        description: <>Studied Systems Engineering.</>,
+      },
+      {
+        name: "SENA - National Learning Service (Jul 19, 2021 - Jul 19, 2023)",
+        description: <>Studied ADSI: Analysis and Development of Information Systems. This marked the beginning of my career as a fullstack developer.</>,
       },
     ],
   },
   technical: {
     display: true,
-    title: "Technical skills",
+    title: "Technical Skills",
     skills: [
       {
         title: "Node.js & Express",
-        description: <>Building backend systems and APIs for internal applications, including authentication and data processing.</>,
+        description: <>Built backend systems and APIs for internal applications, including authentication and data processing.</>,
         images: [],
       },
       {
         title: "React & Next.js",
-        description: <>Developing modular front-end interfaces and fullstack solutions with modern tools like Next.js, Tailwind, and SWR.</>,
+        description: <>Developed modular interfaces and fullstack solutions using modern tools like Next.js, Tailwind, and SWR.</>,
         images: [],
       },
       {
         title: "PostgreSQL & SQL",
-        description: <>Designing relational schemas and writing efficient queries for internal data-heavy systems.</>,
+        description: <>Designed relational schemas and wrote efficient queries for high-volume internal data systems.</>,
         images: [],
       },
       {
-        title: "System integration",
-        description: <>Connecting internal tools (e.g., lunch system + ecotrueque) to automate workflows and reduce manual effort.</>,
+        title: "System Integration",
+        description: <>Connected internal tools (e.g., lunch system + Ecotrueque) to automate workflows and reduce manual effort.</>,
+        images: [],
+      },
+      {
+        title: "PHP & Laravel",
+        description: <>Built robust web applications with Laravel, including CRUD systems, authentication, and RESTful API management.</>,
+        images: [],
+      },
+      {
+        title: "PHP & Slim Framework",
+        description: <>Developed lightweight microservices and APIs using Slim, focusing on simplicity, performance, and scalability.</>,
         images: [],
       },
     ],
