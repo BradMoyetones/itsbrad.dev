@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Ingeniero de Sistemas",
+  role: "Ingeniero de Sistemas | Desarrollador Fullstack con enfoque en React & Node.js",
   avatar: "/images/avatar.jpg",
   email: "brad.moyetones@gmail.com",
   location: "America/Bogota", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -99,7 +99,7 @@ const about = {
       <>
         Soy un desarrollador de sistemas apasionado por crear soluciones que optimizan procesos internos.  
         Empecé como practicante en el Parque Jaime Duque y rápidamente asumí un rol de tiempo completo.  
-        Hoy combino mi experiencia profesional y mis proyectos personales para crecer como desarrollador backend y fullstack.
+        Hoy combino mi experiencia profesional y mis proyectos personales para crecer como desarrollador fullstack.
       </>
     ),
   },

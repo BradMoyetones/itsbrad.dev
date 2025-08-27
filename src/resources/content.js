@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Systems Engineer",
+  role: "Systems Engineer | Fullstack Developer specialized in React & Node.js",
   avatar: "/images/avatar.jpg",
   email: "brad.moyetones@gmail.com",
   location: "America/Bogota", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -99,7 +99,7 @@ const about = {
       <>
         I am a systems developer passionate about creating solutions that optimize internal processes.  
         I started as an intern at Parque Jaime Duque and quickly moved into a full-time role.  
-        Today I combine my professional experience and personal projects to grow as a backend and fullstack developer.
+        Today I combine my professional experience and personal projects to grow as a fullstack developer.
       </>
     ),
   },
