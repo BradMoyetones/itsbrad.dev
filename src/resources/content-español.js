@@ -48,6 +48,11 @@ const social = [
     link: "https://www.instagram.com/its.bradn",
   },
   {
+    name: "Web",
+    icon: "globe",
+    link: "https://portfolio-brad.vercel.app",
+  },
+  {
     name: "Email",
     icon: "email",
     link: `mailto:${person.email}`,
