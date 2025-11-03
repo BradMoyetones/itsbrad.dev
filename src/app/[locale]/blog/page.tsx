@@ -1,19 +1,29 @@
 import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
-import { baseURL, blog, person, newsletter } from "@/resources";
+import { baseURL, newsletter } from "@/resources";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: blog.title,
-    description: blog.description,
-    baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(blog.title)}`,
-    path: blog.path,
-  });
+  const tb = await getTranslations('blog'); // ✅ versión server-safe de useTranslations
+  const tp = await getTranslations('person'); // ✅ versión server-safe de useTranslations
+
+  return {
+    title: tb('title'),
+    description: tb('description', { name: tp("name") }),
+    openGraph: {
+      title: tb('title'),
+      description: tb('description', { name: tp("name") }),
+      images: [
+        `/api/og/generate?title=${encodeURIComponent(tb('title'))}`
+      ],
+      url: `${baseURL}${tb('path')}`,
+    },
+  };
 }
 
 export default function Blog() {
+  
   return (
     <Column maxWidth="s">
       <Schema

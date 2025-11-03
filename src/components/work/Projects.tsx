@@ -1,13 +1,14 @@
-import { getPosts } from "@/utils/utils";
+import { getContent } from "@/utils/utils";
 import { Column } from "@once-ui-system/core";
 import { ProjectCard } from "@/components";
+import { getLocale } from "next-intl/server";
 
 interface ProjectsProps {
   range?: [number, number?];
 }
 
-export function Projects({ range }: ProjectsProps) {
-  let allProjects = getPosts(["src", "app", "work", "projects"]);
+export async function Projects({ range }: ProjectsProps) {
+  let allProjects = await getContent("projects");
 
   const sortedProjects = allProjects.sort((a, b) => {
     return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();

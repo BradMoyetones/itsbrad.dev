@@ -1,25 +1,31 @@
 import React from "react";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
-import { home, about, person, newsletter, baseURL, routes } from "@/resources";
+import { home, about, newsletter, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  
+  const t = useTranslations('home');
+  const ta = useTranslations('about');
+  const tp = useTranslations('person');
+  
   return (
     <Column maxWidth="m" gap="xl" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
-        path={home.path}
-        title={home.title}
-        description={home.description}
-        image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
+        path={t("path")}
+        title={t("title")}
+        description={t("description", {role: tp("role")})}
+        image={`/api/og/generate?title=${encodeURIComponent(t("title"))}`}
         author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
+          name: tp("name"),
+          url: `${baseURL}${t("path")}`,
+          image: `${baseURL}${tp("avatar")}`,
         }}
       />
       <Column fillWidth paddingY="24" gap="m">
@@ -27,26 +33,26 @@ export default function Home() {
           {home.featured.display && (
           <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">
             <Badge background="brand-alpha-weak" paddingX="12" paddingY="4" onBackground="neutral-strong" textVariant="label-default-s" arrow={false}
-              href={home.featured.href}>
-              <Row paddingY="2">{home.featured.title}</Row>
+              href={t("featured.href")}>
+              <Row paddingY="2">{t('featured.title')}</Row>
             </Badge>
           </RevealFx>
           )}
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
             <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
+              {t("headline")}
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
+              {t("subline")}
             </Text>
           </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
             <Button
               id="about"
               data-border="rounded"
-              href={about.path}
+              href={ta("path")}
               variant="secondary"
               size="m"
               weight="default"
@@ -57,11 +63,11 @@ export default function Home() {
                   <Avatar
                     marginRight="8"
                     style={{ marginLeft: "-0.75rem" }}
-                    src={person.avatar}
+                    src={tp("avatar")}
                     size="m"
                   />
                 )}
-                {about.title}
+                {ta("title")}
               </Flex>
             </Button>
           </RevealFx>

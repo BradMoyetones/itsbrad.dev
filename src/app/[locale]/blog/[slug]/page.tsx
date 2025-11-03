@@ -3,11 +3,11 @@ import { CustomMDX, ScrollToHash } from "@/components";
 import { Meta, Schema, AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text } from "@once-ui-system/core";
 import { baseURL, about, blog, person } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { getPosts } from "@/utils/utils";
+import { getContent } from "@/utils/utils";
 import { Metadata } from 'next';
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "blog", "posts"]);
+  const posts = await getContent("posts");
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -21,7 +21,7 @@ export async function generateMetadata({
   const routeParams = await params;
   const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
-  const posts = getPosts(["src", "app", "blog", "posts"])
+  const posts = await getContent("posts")
   let post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
@@ -41,7 +41,8 @@ export default async function Blog({
   const routeParams = await params;
   const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
-  let post = getPosts(["src", "app", "blog", "posts"]).find((post) => post.slug === slugPath);
+  const blogPosts = await getContent("posts");
+  let post = blogPosts.find((post) => post.slug === slugPath)
 
   if (!post) {
     notFound();

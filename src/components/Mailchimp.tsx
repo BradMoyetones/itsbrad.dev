@@ -3,6 +3,7 @@
 import { mailchimp } from "@/resources";
 import { Button, Flex, Heading, Input, Text, Background, Column } from "@once-ui-system/core";
 import { opacity, SpacingToken } from "@once-ui-system/core";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {
@@ -15,14 +16,14 @@ function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T
 
 type NewsletterProps = {
   display: boolean;
-  title: string | JSX.Element;
-  description: string | JSX.Element;
 };
 
 export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
+  const t = useTranslations('newsletter');
+  
 
   const validateEmail = (email: string): boolean => {
     if (email === "") {
@@ -108,7 +109,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
         }}
       />
       <Heading style={{ position: "relative" }} marginBottom="s" variant="display-strong-xs">
-        {newsletter.title}
+        {t('title')}
       </Heading>
       <Text
         style={{
@@ -119,7 +120,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
         marginBottom="l"
         onBackground="neutral-medium"
       >
-        {newsletter.description}
+        {t('description')}
       </Text>
       <form
         style={{

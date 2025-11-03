@@ -1,7 +1,9 @@
 import { home } from "./content";
 
+export const SUPPORTED_LANGS = ["en", "es"]; // Ajusta si agregas más
+
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://portfolio-brad.vercel.app";
+const baseURL = "https://itsbrad.dev";
 
 const routes = {
   "/": true,
@@ -177,7 +179,7 @@ const schema = {
   type: "Portfolio",
   name: "Brad Moyetones",
   description: home.description,
-  email: "brad.moyetones@gmail.com",
+  email: "contact@itsbrad.dev",
 };
 
 // social links

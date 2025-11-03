@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { routes, protectedRoutes } from "@/resources";
 import { Flex, Spinner, Button, Heading, Column, PasswordInput } from "@once-ui-system/core";
 import NotFound from "@/app/not-found";
+import { SUPPORTED_LANGS } from "@/resources/once-ui.config";
 
 interface RouteGuardProps {
 	children: React.ReactNode;
@@ -26,16 +27,29 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       setIsPasswordRequired(false);
       setIsAuthenticated(false);
 
-      const checkRouteEnabled = () => {
-        if (!pathname) return false;
+      if (!pathname) {
+        setLoading(false);
+        return;
+      }
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
+      // 🧠 Eliminar el prefijo de idioma del pathname
+      const normalizedPath = (() => {
+        const segments = pathname.split("/").filter(Boolean);
+        if (SUPPORTED_LANGS.includes(segments[0])) {
+          return "/" + segments.slice(1).join("/");
+        }
+        return pathname;
+      })();
+
+      // 🧩 Verificar si la ruta está habilitada
+      const checkRouteEnabled = () => {
+        if (normalizedPath in routes) {
+          return routes[normalizedPath as keyof typeof routes];
         }
 
         const dynamicRoutes = ["/blog", "/work"] as const;
         for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
+          if (normalizedPath.startsWith(route) && routes[route]) {
             return true;
           }
         }
@@ -46,7 +60,8 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const routeEnabled = checkRouteEnabled();
       setIsRouteEnabled(routeEnabled);
 
-      if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
+      // 🔒 Revisar si la ruta requiere password
+      if (protectedRoutes[normalizedPath as keyof typeof protectedRoutes]) {
         setIsPasswordRequired(true);
 
         const response = await fetch("/api/check-auth");

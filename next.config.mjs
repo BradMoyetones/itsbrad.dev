@@ -1,4 +1,5 @@
 import mdx from "@next/mdx";
+import createNextIntlPlugin from 'next-intl/plugin';
 
 const withMDX = mdx({
   extension: /\.mdx?$/,
@@ -15,4 +16,5 @@ const nextConfig = {
   },
 };
 
-export default withMDX(nextConfig);
+const withNextIntl = createNextIntlPlugin();
+export default withNextIntl(withMDX(nextConfig));
