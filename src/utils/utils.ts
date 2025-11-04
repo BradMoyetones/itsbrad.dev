@@ -1,3 +1,4 @@
+// utils/content.ts
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -20,20 +21,26 @@ type Metadata = {
   link?: string;
 };
 
-import { notFound } from 'next/navigation';
+interface MDXItem {
+  metadata: Metadata;
+  slug: string;
+  content: string;
+}
 
-function getMDXFiles(dir: string) {
+// --- Helpers ---
+
+function getMDXFiles(dir: string): string[] {
   if (!fs.existsSync(dir)) {
-    notFound();
+    throw new Error(`Directory not found: ${dir}`);
   }
 
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
 
 function readMDXFile(filePath: string) {
-    if (!fs.existsSync(filePath)) {
-        notFound();
-    }
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`File not found: ${filePath}`);
+  }
 
   const rawContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(rawContent);
@@ -66,7 +73,9 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getPosts(customPath = ["", "", "", ""]) {
-  const postsDir = path.join(process.cwd(), ...customPath);
-  return getMDXData(postsDir);
+// --- Public API ---
+
+export function getContent(type: string, locale: string = "es") {
+  const baseDir = path.join(process.cwd(), "src", "content", locale, type);
+  return getMDXData(baseDir)
 }

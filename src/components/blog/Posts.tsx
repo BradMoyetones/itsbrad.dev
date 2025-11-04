@@ -1,4 +1,4 @@
-import { getPosts } from '@/utils/utils';
+import { getContent } from '@/utils/utils';
 import { Grid } from '@once-ui-system/core';
 import Post from './Post';
 
@@ -9,13 +9,13 @@ interface PostsProps {
     direction?: 'row' | 'column';
 }
 
-export function Posts({
+export async function Posts({
     range,
     columns = '1',
     thumbnail = false,
     direction
 }: PostsProps) {
-    let allBlogs = getPosts(['src', 'app', 'blog', 'posts']);
+    let allBlogs = await getContent("posts");
 
     const sortedBlogs = allBlogs.sort((a, b) => {
         return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();

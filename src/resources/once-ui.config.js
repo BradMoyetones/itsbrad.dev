@@ -1,7 +1,17 @@
 import { home } from "./content";
 
+const i18n = true;
+
+// Manage localized content in the messages folder
+const i18nOptions = {
+  locales: ['en', 'es'],            // A list of all locales that are supported, e.g. ['en','es']
+  defaultLocale: 'es'         // Locale used by default and as a fallback
+}
+
+const SUPPORTED_LANGS = ["en", "es"]; // Ajusta si agregas más
+
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://portfolio-brad.vercel.app";
+const baseURL = "https://itsbrad.dev";
 
 const routes = {
   "/": true,
@@ -177,7 +187,7 @@ const schema = {
   type: "Portfolio",
   name: "Brad Moyetones",
   description: home.description,
-  email: "brad.moyetones@gmail.com",
+  email: "contact@itsbrad.dev",
 };
 
 // social links
@@ -187,4 +197,4 @@ const sameAs = {
   // discord: "https://discord.com/invite/5EyAQ4eNdS",
 };
 
-export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle };
+export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle, i18n, i18nOptions, SUPPORTED_LANGS };

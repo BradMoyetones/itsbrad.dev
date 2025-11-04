@@ -1,0 +1,268 @@
+---
+title: "Inicio rápido con Noesis"
+summary: "Noesis es una plataforma de publicación moderna, amigable para desarrolladores, para reflexiones digitales, construida con Next.js, Prisma y un rico editor visual."
+image: "/images/projects/noesis/cover-01.jpeg"
+publishedAt: "2025-06-20"
+tag: "Noesis"
+---
+
+## Acerca de
+
+Noesis es una **plataforma de publicación moderna** construida para desarrolladores y escritores que desean compartir reflexiones, historias o ensayos. Cuenta con una estructura limpia, **MDX-first**, con un potente stack tecnológico:
+
+* **Next.js App Router**
+* **PostgreSQL** a través de Neon
+* **Prisma ORM**
+* **NextAuth.js** con Google y credenciales
+* **Tailwind CSS** y **shadcn/ui**
+* **Plate.js** para la edición visual
+* **Server Actions**
+
+El proyecto es compatible con características sociales (como seguidores y "me gusta"), categorización de publicaciones, hashtags y verificación de correo electrónico.
+
+## Licencia
+
+Noesis está licenciado bajo una **Licencia de Software Comercial**.
+Esto significa que el código fuente **no es de código abierto** y **no está disponible públicamente**.
+
+Eres libre de usar la plataforma como usuario final, pero la **redistribución, modificación o ingeniería inversa** de la base de código **no está permitida** sin el permiso explícito del autor.
+
+## Inicio rápido
+
+Clonar el repositorio:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: "git clone https://github.com/BradMoyetones/noesis.git",
+    language: "bash"
+  }
+]} />
+
+Navegar al proyecto:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: "cd noesis-main",
+    language: "bash"
+  }
+]} />
+
+Instalar las dependencias:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: "npm install",
+    language: "bash"
+  }
+]} />
+
+Ejecutar el servidor de desarrollo:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: "npm run dev",
+    language: "bash"
+  }
+]} />
+
+## Configuración de Prisma
+
+Datasource y generator en `schema.prisma`:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: `generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}`,
+    language: "ts",
+    label: "prisma/schema.prisma"
+  }
+]} />
+
+Inicializar el cliente de Prisma de forma global segura:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: `import { PrismaClient } from '@prisma/client'
+
+declare global {
+  var prisma: PrismaClient | undefined
+}
+
+export const db = globalThis.prisma ?? new PrismaClient()
+
+if (process.env.NODE_ENV !== 'production') {
+  globalThis.prisma = db
+}`,
+    language: "ts",
+    label: "route.ts"
+  }
+]} />
+
+## Autenticación
+
+Noesis utiliza **NextAuth.js** con una combinación de Google y credenciales personalizadas. Aquí está el manejador de la ruta de la API:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: `import NextAuth from "next-auth"
+import { authOptions } from "@/lib/auth"
+
+const handler = NextAuth(authOptions)
+
+export { handler as GET, handler as POST }`,
+    language: "ts"
+  }
+]} />
+
+### Opciones de autenticación
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: `import GoogleProvider from "next-auth/providers/google"
+import CredentialsProvider from "next-auth/providers/credentials"
+import { PrismaAdapter } from "@auth/prisma-adapter"
+import { db } from "@/lib/prisma"
+import { addDays, addMinutes } from "date-fns"
+import { compare } from "bcrypt"
+import { encode } from "next-auth/jwt"
+import { sendVerificationEmail } from "./mail/email-service"
+
+const adapter = PrismaAdapter(db)
+
+export const authOptions = {
+  adapter,
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) return null
+
+        const user = await db.user.findUnique({
+          where: { email: credentials.email },
+        })
+
+        if (!user || !user.hashedPassword) {
+          throw new Error("Invalid credentials.")
+        }
+
+        const isValid = await compare(credentials.password, user.hashedPassword)
+        if (!isValid) {
+          throw new Error("Incorrect password.")
+        }
+
+        return user
+      },
+    }),
+  ],
+  session: { strategy: "database" },
+  callbacks: {
+    async jwt({ token, account }) {
+      if (account?.provider === "credentials") {
+        token.credentials = true
+      }
+      return token
+    },
+    session({ session, user }) {
+      if (user?.id) session.user.id = user.id
+      return session
+    },
+    async signIn({ user }) {
+      if (!user.emailVerified && user.email) {
+        const token = crypto.randomUUID()
+        const expires = addMinutes(new Date(), 10)
+
+        await db.verificationToken.create({
+          data: {
+            identifier: user.email,
+            token,
+            expires,
+          },
+        })
+
+        await sendVerificationEmail(user.email, token)
+      }
+
+      return true
+    },
+  },
+  jwt: {
+    encode: async function (params) {
+      if (params.token?.credentials) {
+        const sessionToken = crypto.randomUUID()
+        const createdSession = await adapter?.createSession?.({
+          sessionToken,
+          userId: params.token.sub!,
+          expires: addDays(new Date(), 30),
+        })
+
+        if (!createdSession) throw new Error("Failed to create session")
+
+        return sessionToken
+      }
+
+      return encode(params)
+    },
+  },
+}`,
+    language: "ts"
+  }
+]} />
+
+## Soporte de correo electrónico
+
+Configuración SMTP con `nodemailer`:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: `export const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST!,
+  port: Number(process.env.SMTP_PORT!),
+  secure: true,
+  auth: {
+    user: process.env.SMTP_USERNAME!,
+    pass: process.env.SMTP_PASSWORD!,
+  },
+})`,
+    language: "ts"
+  }
+]} />
+
+## Server Actions
+
+Ejemplo de *server action* para obtener todas las categorías:
+
+<CodeBlock compact marginBottom="16" codes={[
+  {
+    code: `import { db } from "@/lib/prisma"
+import { Category } from "@prisma/client"
+
+export async function getAllCategories(): Promise<Category[]> {
+  return await db.category.findMany()
+}`,
+    language: "ts"
+  }
+]} />
+
+## ¿Qué sigue?
+
+Próximas características e ideas para el desarrollo futuro:
+
+* Soporte de reacciones en publicaciones y comentarios
+* Analíticas de escritura
+* Sistema de firma digital y licencias
+* Pruebas de laboratorio del editor: MDXEditor, Plate.js, Milkdown, Lexical
+* Escritura colaborativa

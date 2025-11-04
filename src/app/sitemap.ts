@@ -1,23 +1,36 @@
-import { getPosts } from "@/utils/utils";
+import { getContent } from "@/utils/utils";
 import { baseURL, routes as routesConfig } from "@/resources";
 
+const locales = ["en", "es"];
+
 export default async function sitemap() {
-  const blogs = getPosts(["src", "app", "blog", "posts"]).map((post) => ({
-    url: `${baseURL}/blog/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
-  }));
+  const blogPosts = await getContent("posts")
+  const workProjects = await getContent("projects");
+  
+  const blogs = blogPosts.flatMap((post) =>
+    locales.map((locale) => ({
+      url: `${baseURL}/${locale}/blog/${post.slug}`,
+      lastModified: post.metadata.publishedAt,
+    }))
+  );
+  
+  const works = workProjects.flatMap((post) =>
+    locales.map((locale) => ({
+      url: `${baseURL}/${locale}/work/${post.slug}`,
+      lastModified: post.metadata.publishedAt,
+    }))
+  );
 
-  const works = getPosts(["src", "app", "work", "projects"]).map((post) => ({
-    url: `${baseURL}/work/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
-  }));
+  const activeRoutes = Object.keys(routesConfig).filter(
+    (route) => routesConfig[route as keyof typeof routesConfig]
+  );
 
-  const activeRoutes = Object.keys(routesConfig).filter((route) => routesConfig[route as keyof typeof routesConfig]);
-
-  const routes = activeRoutes.map((route) => ({
-    url: `${baseURL}${route !== "/" ? route : ""}`,
-    lastModified: new Date().toISOString().split("T")[0],
-  }));
+  const routes = activeRoutes.flatMap((route) =>
+    locales.map((locale) => ({
+      url: `${baseURL}/${locale}${route !== "/" ? route : ""}`,
+      lastModified: new Date().toISOString().split("T")[0],
+    }))
+  );
 
   return [...routes, ...blogs, ...works];
 }

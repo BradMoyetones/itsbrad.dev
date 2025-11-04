@@ -1,0 +1,191 @@
+{
+    "person": {
+        "firstName": "Brad",
+        "lastName": "Moyetones",
+        "name": "Brad Moyetones",
+        "role": "Ingeniero de Sistemas | Desarrollador Fullstack especializado en React y Node.js",
+        "avatar": "/images/avatar.jpg",
+        "email": "brad.moyetones@gmail.com",
+        "location": "America/Bogota",
+        "languages": ["Español", "Inglés"]
+    },
+
+    "newsletter": {
+        "title": "Suscríbete al boletín de {firstName}",
+        "description": "Ocasionalmente escribo sobre software, tecnología y comparto reflexiones sobre la intersección entre la creatividad y la ingeniería."
+    },
+
+    "home": {
+        "path": "/",
+        "image": "/images/og/home.jpg",
+        "label": "Inicio",
+        "title": "Portafolio de {name}",
+        "description": "Sitio web que muestra mi trabajo como {role}",
+        "headline": "Construyendo puentes entre el software y el código",
+        "featured": {
+            "title": "Proyecto reciente: Noesis",
+            "href": "/work/noesis-reflection-platform"
+        },
+        "subline": "Soy {name}, un {role} en el Parque Jaime Duque, donde desarrollo herramientas internas y sistemas personalizados que resuelven problemas reales. Disfruto aprender nuevas tecnologías y crear proyectos personales que reflejan tanto la lógica como la introspección."
+    },
+
+    "about": {
+        "path": "/es/about",
+        "label": "Sobre mí",
+        "title": "Acerca de – {name}",
+        "description": "Conoce a {name}, {role} de {location}",
+        "tableOfContent": {},
+        "avatar": {},
+        "calendar": {
+            "title": "Programe una llamada",
+            "link": "https://cal.com/itsbrad"
+        },
+        "intro": {
+            "title": "Introducción",
+            "description": "Soy un desarrollador de sistemas apasionado por crear soluciones que optimicen procesos internos. Comencé como practicante en el Parque Jaime Duque y rápidamente pasé a un rol de tiempo completo. Hoy combino mi experiencia profesional y mis proyectos personales para crecer como desarrollador fullstack."
+        },
+
+        "work": {
+        "title": "Experiencia laboral",
+        "experiences": [
+            {
+                "company": "Parque Jaime Duque",
+                "timeframe": "2023 - Presente",
+                "role": "Desarrollador de Sistemas",
+                "achievements": [
+                    "En el Parque Jaime Duque he tenido la oportunidad de diseñar soluciones que impactan directamente las operaciones diarias del personal. Algunas incluyen un sistema de gestión de comidas con reportes y analítica, la plataforma Ecotrueque que promueve el reciclaje mediante beneficios, una biblioteca digital que reemplazó procesos manuales en Excel, y una herramienta de programación que optimizó la organización de turnos del personal."
+                ],
+                "images": [
+                    {
+                        "src": "/images/projects/lunches/cover-01.png",
+                        "alt": "Proyecto Almuerzos",
+                        "width": 16,
+                        "height": 9
+                    },
+                    {
+                        "src": "/images/projects/ecotrueque/cover-01.jpeg",
+                        "alt": "Proyecto Ecotrueque",
+                        "width": 16,
+                        "height": 9
+                    }
+                ]
+            },
+            {
+                "company": "BradTunes",
+                "timeframe": "2024 - Presente",
+                "role": "Proyecto Personal – Aplicación de Música de Escritorio",
+                "achievements": [
+                    "BradTunes nació como un proyecto personal donde combiné varias de mis pasiones: la música, la programación y la experiencia de usuario. Construí una aplicación de escritorio con Electron y React que permite descargar y organizar contenido multimedia, integrando conversión de formatos con YT-DLP y FFMPEG, una base de datos local con SQLite y una interfaz moderna desarrollada con Shadcn/ui."
+                ],
+                "images": [
+                    {
+                        "src": "/images/projects/bradtunes/cover-02.jpeg",
+                        "alt": "Proyecto BradTunes",
+                        "width": 16,
+                        "height": 9
+                    }
+                ]
+            },
+            {
+                "company": "Noesis",
+                "timeframe": "2025 - Presente",
+                "role": "Proyecto Personal – Plataforma de Conocimiento",
+                "achievements": [
+                    "Actualmente estoy desarrollando Noesis, una plataforma diseñada para el aprendizaje y la escritura colaborativa. Es una aplicación fullstack construida con Next.js y PostgreSQL, que integra autenticación segura con NextAuth, un editor enriquecido con Plate.js y un diseño modular y adaptable con Shadcn/ui y Tailwind."
+                ],
+                "images": [
+                    {
+                        "src": "/images/projects/noesis/cover-01.jpeg",
+                        "alt": "Proyecto Noesis",
+                        "width": 16,
+                        "height": 9
+                    },
+                    {
+                        "src": "/images/projects/noesis/cover-02.jpeg",
+                        "alt": "Proyecto Noesis",
+                        "width": 16,
+                        "height": 9
+                    }
+                ]
+            }
+        ]
+        },
+
+        "studies": {
+            "title": "Educación",
+            "institutions": [
+                {
+                    "name": "Aprendizaje autodidacta",
+                    "description": "Amplié mis conocimientos en tecnologías web modernas como React, Node.js y Next.js a través de proyectos personales y autoestudio."
+                },
+                {
+                    "name": "Universidad CUN - Corporación Unificada Nacional de Educación Superior (29 feb 2024 - 30 jun 2025)",
+                    "description": "Estudios en Ingeniería de Sistemas."
+                },
+                {
+                    "name": "SENA - Servicio Nacional de Aprendizaje (19 jul 2021 - 19 jul 2023)",
+                    "description": "Programa ADSI: Análisis y Desarrollo de Sistemas de Información. Este fue el inicio de mi carrera como desarrollador fullstack."
+                }
+            ]
+        },
+
+        "technical": {
+            "title": "Habilidades",
+            "skills": [
+                {
+                    "title": "Tecnologías",
+                    "description": "Node.js, Express, React, Next.js, Tailwind, PostgreSQL, MySQL, Prisma, SQLite, PHP (Laravel y Slim), integración de sistemas y desarrollo de APIs.",
+                    "images": []
+                },
+                {
+                    "title": "Habilidades blandas",
+                    "description": "Soy una persona colaborativa, responsable y apasionada por el desarrollo. Trabajo con vocación, disfruto resolver problemas y me adapto rápidamente a nuevos desafíos.",
+                    "images": []
+                }
+            ]
+        }
+    },
+
+    "blog": {
+        "path": "/blog",
+        "label": "Blog",
+        "title": "Reflexiones sobre código, crecimiento y construir con propósito",
+        "description": "Pensamientos, lecciones y descubrimientos de {name}, un desarrollador autodidacta apasionado por el aprendizaje, la resolución de problemas y convertir ideas en realidad."
+    },
+
+    "work": {
+        "path": "/work",
+        "label": "Proyectos",
+        "title": "Proyectos – {name}",
+        "description": "Proyectos de diseño y desarrollo realizados por {name}"
+    },
+
+    "gallery": {
+        "path": "/gallery",
+        "label": "Galería",
+        "title": "Galería de fotos – {name}",
+        "description": "Una colección fotográfica de {name}",
+        "images": [
+            { "src": "/images/gallery/horizontal-2.jpg", "alt": "imagen", "orientation": "horizontal" },
+            { "src": "/images/gallery/horizontal-3.jpg", "alt": "imagen", "orientation": "horizontal" },
+            { "src": "/images/gallery/horizontal-5.jpg", "alt": "imagen", "orientation": "horizontal" },
+            { "src": "/images/gallery/horizontal-6.jpg", "alt": "imagen", "orientation": "horizontal" },
+            { "src": "/images/gallery/horizontal-4.jpg", "alt": "imagen", "orientation": "horizontal" },
+            { "src": "/images/gallery/horizontal-7.jpg", "alt": "imagen", "orientation": "horizontal" },
+            { "src": "/images/gallery/vertical-1.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-3.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-4.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-5.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-2.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-6.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-7.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-8.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-9.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-10.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-11.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-12.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-13.jpg", "alt": "imagen", "orientation": "vertical" },
+            { "src": "/images/gallery/vertical-14.jpg", "alt": "imagen", "orientation": "vertical" }
+        ]
+    }
+}
