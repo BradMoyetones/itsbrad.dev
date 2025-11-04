@@ -1,11 +1,14 @@
 import { ImageResponse } from "next/og";
-import { baseURL, person } from "@/resources";
+import { baseURL } from "@/resources";
+import { getTranslations } from "next-intl/server";
 
 export const runtime = "nodejs";
 
 export async function GET(request: Request) {
   let url = new URL(request.url);
   let title = url.searchParams.get("title") || "Portfolio";
+  
+  const tp = await getTranslations("person")
 
   async function loadGoogleFont(font: string) {
     const url = `https://fonts.googleapis.com/css2?family=${font}`
@@ -63,7 +66,7 @@ export async function GET(request: Request) {
           }}
         >
           <img
-            src={baseURL + person.avatar}
+            src={baseURL + tp("avatar")}
             style={{
               width: "12rem",
               height: "12rem",
@@ -86,7 +89,7 @@ export async function GET(request: Request) {
                 textWrap: "balance",
               }}
             >
-              {person.name}
+              {tp("name")}
             </span>
             <span
               style={{
@@ -97,7 +100,7 @@ export async function GET(request: Request) {
                 opacity: "0.6",
               }}
             >
-              {person.role}
+              {tp("role")}
             </span>
           </div>
         </div>
