@@ -5,28 +5,40 @@ import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import { getContent } from "@/utils/utils";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
-// export async function generateStaticParams(): Promise<{ slug: string }[]> {
-//   const posts = await getContent("projects");
-//   return posts.map((post) => ({
-//     slug: post.slug,
-//   }));
-// }
+interface WorkParams {
+  params: {
+    slug: string;
+    locale: string;
+  };
+}
 
+export async function generateStaticParams(): Promise<{ slug: string; locale: string }[]> {
+  const locales = routing.locales;
+  
+  // Create an array to store all posts from all locales
+  const allPosts: { slug: string; locale: string }[] = [];
+
+  // Fetch posts for each locale
+  for (const locale of locales) {
+    const posts = getContent('projects', locale);
+    allPosts.push(...posts.map(post => ({
+      slug: post.slug,
+      locale: locale,
+    })));
+  }
+
+  return allPosts;
+}
 
 export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string | string[]; locale: string }>;
-}): Promise<Metadata> {
-  const { slug, locale } = await params;
+  params: { slug, locale },
+}: WorkParams): Promise<Metadata> {
   const tw = await getTranslations('work');
-
-  const slugPath = Array.isArray(slug) ? slug.join('/') : slug || '';
-  const posts = await getContent("projects");
-  const post = posts.find(p => p.slug === slugPath);
+  const post = getContent("projects").find(p => p.slug === slug);
 
   if (!post) return {};
 
@@ -39,20 +51,13 @@ export async function generateMetadata({
   });
 }
 
-export default async function Project({
-  params,
-}: {
-  params: Promise<{ slug: string | string[]; locale: string }>;
-}) {
-  const { slug, locale } = await params;
-  const tw = await getTranslations('work');
-  const tp = await getTranslations('person');
-  const ta = await getTranslations('about');
+export default function Project({ params }: WorkParams) {
+  setRequestLocale(params.locale);
+  const tw = useTranslations('work');
+  const tp = useTranslations('person');
+  const ta = useTranslations('about');
   
-  const postContent = await getContent("projects");
-  const slugPath = Array.isArray(slug) ? slug.join('/') : slug || '';
-
-  const post = postContent.find((post) => post.slug === slugPath)
+  const post = getContent("projects", params.locale).find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();

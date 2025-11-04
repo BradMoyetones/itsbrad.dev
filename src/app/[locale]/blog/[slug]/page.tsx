@@ -4,47 +4,60 @@ import { Meta, Schema, AvatarGroup, Button, Column, Heading, HeadingNav, Icon, R
 import { baseURL } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { getContent } from "@/utils/utils";
-import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string, slug: string | string[] }>;
-}): Promise<Metadata> {
-  const { locale, slug } = await params; // ⚠️ await aquí
+interface BlogParams {
+  params: { 
+    slug: string;
+    locale: string;
+  };
+}
+
+export async function generateStaticParams() {
+	const locales = routing.locales;
+    
+  // Create an array to store all posts from all locales
+  const allPosts: { slug: string; locale: string }[] = [];
+
+  // Fetch posts for each locale
+  for (const locale of locales) {
+    const posts = getContent('posts', locale);
+    allPosts.push(...posts.map(post => ({
+      slug: post.slug,
+      locale: locale,
+    })));
+  }
+
+  return allPosts;
+}
+
+export async function generateMetadata({ params: { slug, locale } }: BlogParams) {
   const tb = await getTranslations('blog');
+  const posts = getContent("posts", locale);
 
   const slugPath = Array.isArray(slug) ? slug.join('/') : slug || '';
-  const posts = await getContent("posts");
   const post = posts.find(p => p.slug === slugPath);
 
-  if (!post) return {};
+  if (!post) return;
 
   return Meta.generate({
     title: post.metadata.title,
     description: post.metadata.summary,
     baseURL,
     image: post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`,
-    path: `${tb("path")}/${locale}/${post.slug}`,
+    path: `/${locale}${tb("path")}/${post.slug}`,
   });
 }
 
-export default async function Blog({
-  params,
-}: {
-  params: Promise<{ locale: string, slug: string | string[] }>;
-}) {
-  const { slug, locale } = await params;
-  setRequestLocale(locale)
-  const tb = await getTranslations('blog');
-  const tp = await getTranslations('person');
-  const ta = await getTranslations('about');
-  
-  const slugPath = Array.isArray(slug) ? slug.join('/') : slug || '';
-  
-  const blogPosts = await getContent("posts");
-  let post = blogPosts.find((post) => post.slug === slugPath)
+export default function Blog({ params }: BlogParams) {
+  setRequestLocale(params.locale)
+  const tb = useTranslations('blog');
+  const tp = useTranslations('person');
+  const ta = useTranslations('about');
+
+  let post = getContent("posts", params.locale).find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
@@ -63,7 +76,7 @@ export default async function Blog({
           <Schema
             as="blogPosting"
             baseURL={baseURL}
-            path={`${tb("path")}/${locale}/${post.slug}`}
+            path={`${tb("path")}/${params.locale}/${post.slug}`}
             title={post.metadata.title}
             description={post.metadata.summary}
             datePublished={post.metadata.publishedAt}
@@ -90,20 +103,20 @@ export default async function Blog({
           </Column>
           <ScrollToHash />
         </Column>
-    </Row>
-    <Column maxWidth={12} paddingLeft="40" fitHeight position="sticky" top="80" gap="16" hide="m">
-      <Row
-        gap="12"
-        paddingLeft="2"
-        vertical="center"
-        onBackground="neutral-medium"
-        textVariant="label-default-s"
-      >
-        <Icon name="document" size="xs" />
-        On this page
       </Row>
-      <HeadingNav fitHeight/>
-    </Column>
+      <Column maxWidth={12} paddingLeft="40" fitHeight position="sticky" top="80" gap="16" hide="m">
+        <Row
+          gap="12"
+          paddingLeft="2"
+          vertical="center"
+          onBackground="neutral-medium"
+          textVariant="label-default-s"
+        >
+          <Icon name="document" size="xs" />
+          On this page
+        </Row>
+        <HeadingNav fitHeight/>
+      </Column>
     </Row>
   );
 }

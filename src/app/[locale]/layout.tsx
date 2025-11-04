@@ -7,9 +7,10 @@ import classNames from "classnames";
 import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from '@/components';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
-import { NextIntlClientProvider } from 'next-intl';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale  } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata() {
   const th = await getTranslations('home');
@@ -24,10 +25,10 @@ export async function generateMetadata() {
   });
 }
 
-interface RootLayoutProps {
-	children: React.ReactNode;
-	params: {locale: string};
-}
+type RootLayoutProps = {
+  children: React.ReactNode;
+  params: Promise<{locale: string}>;
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -35,8 +36,12 @@ export function generateStaticParams() {
 
 export default async function RootLayout({
   children,
-  params: {locale}
+  params
 }: RootLayoutProps) {
+  const {locale} = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
   setRequestLocale(locale);
 
   const messages = await getMessages();

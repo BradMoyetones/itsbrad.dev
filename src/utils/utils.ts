@@ -2,8 +2,6 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { notFound } from "next/navigation";
-import { getLocale } from "next-intl/server";
 
 type Team = {
   name: string;
@@ -29,23 +27,19 @@ interface MDXItem {
   content: string;
 }
 
-/**
- * Lee todos los archivos .mdx dentro de una carpeta
- */
-function getMDXFiles(dir: string) {
+// --- Helpers ---
+
+function getMDXFiles(dir: string): string[] {
   if (!fs.existsSync(dir)) {
-    notFound();
+    throw new Error(`Directory not found: ${dir}`);
   }
 
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
 
-/**
- * Lee un archivo .mdx y extrae su frontmatter y contenido
- */
 function readMDXFile(filePath: string) {
   if (!fs.existsSync(filePath)) {
-    notFound();
+    throw new Error(`File not found: ${filePath}`);
   }
 
   const rawContent = fs.readFileSync(filePath, "utf-8");
@@ -65,25 +59,23 @@ function readMDXFile(filePath: string) {
   return { metadata, content };
 }
 
-/**
- * Obtiene el contenido MDX desde src/content/[locale]/[type]
- * 
- * @param type - 'posts' | 'projects' | 'work' | etc.
- * @param locale - opcional, si no se pasa se detecta con getLocale()
- */
-export async function getContent(type: string, locale?: string): Promise<MDXItem[]> {
-  const currentLocale = locale || (await getLocale());
-  const baseDir = path.join(process.cwd(), "src", "content", currentLocale, type);
-
-  if (!fs.existsSync(baseDir)) {
-    notFound();
-  }
-
-  const mdxFiles = getMDXFiles(baseDir);
-
+function getMDXData(dir: string) {
+  const mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
-    const { metadata, content } = readMDXFile(path.join(baseDir, file));
+    const { metadata, content } = readMDXFile(path.join(dir, file));
     const slug = path.basename(file, path.extname(file));
-    return { metadata, slug, content };
+
+    return {
+      metadata,
+      slug,
+      content,
+    };
   });
+}
+
+// --- Public API ---
+
+export function getContent(type: string, locale: string = "es") {
+  const baseDir = path.join(process.cwd(), "src", "content", locale, type);
+  return getMDXData(baseDir)
 }

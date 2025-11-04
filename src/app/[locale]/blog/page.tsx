@@ -3,6 +3,7 @@ import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL, newsletter } from "@/resources";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 export async function generateMetadata({
   params,
@@ -27,15 +28,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function Blog({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export default function Blog({ params: {locale}}: { params: { locale: string }}) {
   setRequestLocale(locale)
-  const tb = await getTranslations('blog');
-  const tp = await getTranslations('person');
+  const tb = useTranslations('blog');
+  const tp = useTranslations('person');
   
   return (
     <Column maxWidth="s">

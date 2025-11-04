@@ -1,7 +1,8 @@
 import { Column, Meta, Schema } from "@once-ui-system/core";
 import { baseURL, about } from "@/resources";
 import { Projects } from "@/components/work/Projects";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 export async function generateMetadata() {
   const tw = await getTranslations('work');
@@ -16,10 +17,13 @@ export async function generateMetadata() {
   });
 }
 
-export default async function Work() {
-  const tw = await getTranslations('work');
-  const tp = await getTranslations('person');
-  const ta = await getTranslations('about');
+export default function Work(
+  { params: {locale}}: { params: { locale: string }}
+) {
+  setRequestLocale(locale)
+  const tw = useTranslations('work');
+  const tp = useTranslations('person');
+  const ta = useTranslations('about');
 
   return (
     <Column maxWidth="m">
