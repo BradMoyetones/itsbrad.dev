@@ -4,9 +4,12 @@ import { Posts } from "@/components/blog/Posts";
 import { baseURL, newsletter } from "@/resources";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export async function generateMetadata(
-  { params: {locale}}: { params: { locale: string }}
-) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params; // ⚠️ await aquí
   const tb = await getTranslations('blog');
   const tp = await getTranslations('person');
 
@@ -24,13 +27,16 @@ export async function generateMetadata(
   };
 }
 
-export default async function Blog(
-  { params: {locale}}: { params: { locale: string }}
-) {
+export default async function Blog({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale)
   const tb = await getTranslations('blog');
   const tp = await getTranslations('person');
   
-  setRequestLocale(locale)
   return (
     <Column maxWidth="s">
       <Schema

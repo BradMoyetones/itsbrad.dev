@@ -13,7 +13,7 @@ export default function MasonryGrid() {
 
   const tg = useTranslations("gallery")
 
-  const images = tg.raw("images") as any[]
+  const images = (tg.raw("images")||[]) as any[]
 
   return (
     <Masonry

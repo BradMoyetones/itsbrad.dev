@@ -11,7 +11,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale  } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata() {
   const th = await getTranslations('home');
   const tp = await getTranslations('person');
 

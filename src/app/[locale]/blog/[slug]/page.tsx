@@ -10,39 +10,39 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string | string[], locale: string; }>;
+  params: Promise<{ locale: string, slug: string | string[] }>;
 }): Promise<Metadata> {
+  const { locale, slug } = await params; // ⚠️ await aquí
   const tb = await getTranslations('blog');
 
-  const routeParams = await params;
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
-
-  const posts = await getContent("posts")
-  let post = posts.find((post) => post.slug === slugPath);
+  const slugPath = Array.isArray(slug) ? slug.join('/') : slug || '';
+  const posts = await getContent("posts");
+  const post = posts.find(p => p.slug === slugPath);
 
   if (!post) return {};
 
   return Meta.generate({
     title: post.metadata.title,
     description: post.metadata.summary,
-    baseURL: baseURL,
-    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
-    path: `${tb("path")}/${(await params).locale}/${post.slug}`,
+    baseURL,
+    image: post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`,
+    path: `${tb("path")}/${locale}/${post.slug}`,
   });
 }
 
 export default async function Blog({
-  params
-}: { params: Promise<{ slug: string | string[], locale: string; }> }) {
-  const locale = (await params).locale
+  params,
+}: {
+  params: Promise<{ locale: string, slug: string | string[] }>;
+}) {
+  const { slug, locale } = await params;
   setRequestLocale(locale)
   const tb = await getTranslations('blog');
   const tp = await getTranslations('person');
   const ta = await getTranslations('about');
-
-  const routeParams = await params;
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
-
+  
+  const slugPath = Array.isArray(slug) ? slug.join('/') : slug || '';
+  
   const blogPosts = await getContent("posts");
   let post = blogPosts.find((post) => post.slug === slugPath)
 

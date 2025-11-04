@@ -8,9 +8,12 @@ import { Posts } from "@/components/blog/Posts";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
-export default function Home(
-  { params: {locale}}: { params: { locale: string }}
-) {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   setRequestLocale(locale);
   const t = useTranslations('home');
   const ta = useTranslations('about');

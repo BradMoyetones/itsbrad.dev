@@ -15,61 +15,42 @@ import { routing } from "@/i18n/routing";
 //   }));
 // }
 
-export async function generateStaticParams(): Promise<{ slug: string; locale: string }[]> {
-  // 1. Obtener todos los posts (proyectos)
-  const posts = await getContent("projects");
-
-  // 2. Obtener todos los locales/idiomas definidos por Next.js Intl
-  const locales = routing.locales;
-
-  // 3. Generar la matriz combinada de { slug, locale }
-  const params: { slug: string; locale: string }[] = [];
-
-  posts.forEach((post) => {
-    locales.forEach((locale) => {
-      params.push({
-        slug: post.slug, // El slug del proyecto
-        locale: locale,  // El código del idioma (ej: 'es', 'en')
-      });
-    });
-  });
-
-  return params;
-}
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string | string[] }>;
+  params: Promise<{ slug: string | string[]; locale: string }>;
 }): Promise<Metadata> {
-  const routeParams = await params;
+  const { slug, locale } = await params;
   const tw = await getTranslations('work');
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
-  const posts = await getContent("projects")
-  let post = posts.find((post) => post.slug === slugPath);
+  const slugPath = Array.isArray(slug) ? slug.join('/') : slug || '';
+  const posts = await getContent("projects");
+  const post = posts.find(p => p.slug === slugPath);
 
   if (!post) return {};
 
   return Meta.generate({
     title: post.metadata.title,
     description: post.metadata.summary,
-    baseURL: baseURL,
-    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+    baseURL,
+    image: post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`,
     path: `${tw("path")}/${post.slug}`,
   });
 }
 
 export default async function Project({
-  params
-}: { params: Promise<{ slug: string | string[] }> }) {
-  const routeParams = await params;
+  params,
+}: {
+  params: Promise<{ slug: string | string[]; locale: string }>;
+}) {
+  const { slug, locale } = await params;
   const tw = await getTranslations('work');
   const tp = await getTranslations('person');
   const ta = await getTranslations('about');
-
+  
   const postContent = await getContent("projects");
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
+  const slugPath = Array.isArray(slug) ? slug.join('/') : slug || '';
 
   const post = postContent.find((post) => post.slug === slugPath)
 
