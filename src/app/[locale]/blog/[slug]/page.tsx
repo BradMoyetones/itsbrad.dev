@@ -1,23 +1,19 @@
 import { notFound } from "next/navigation";
 import { CustomMDX, ScrollToHash } from "@/components";
 import { Meta, Schema, AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text } from "@once-ui-system/core";
-import { baseURL, about, blog, person } from "@/resources";
+import { baseURL } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { getContent } from "@/utils/utils";
 import { Metadata } from 'next';
-
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = await getContent("posts");
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string | string[] }>;
+  params: Promise<{ slug: string | string[], locale: string; }>;
 }): Promise<Metadata> {
+  const tb = await getTranslations('blog');
+
   const routeParams = await params;
   const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
@@ -31,13 +27,19 @@ export async function generateMetadata({
     description: post.metadata.summary,
     baseURL: baseURL,
     image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
-    path: `${blog.path}/${post.slug}`,
+    path: `${tb("path")}/${(await params).locale}/${post.slug}`,
   });
 }
 
 export default async function Blog({
   params
-}: { params: Promise<{ slug: string | string[] }> }) {
+}: { params: Promise<{ slug: string | string[], locale: string; }> }) {
+  const locale = (await params).locale
+  setRequestLocale(locale)
+  const tb = await getTranslations('blog');
+  const tp = await getTranslations('person');
+  const ta = await getTranslations('about');
+
   const routeParams = await params;
   const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
@@ -61,16 +63,16 @@ export default async function Blog({
           <Schema
             as="blogPosting"
             baseURL={baseURL}
-            path={`${blog.path}/${post.slug}`}
+            path={`${tb("path")}/${locale}/${post.slug}`}
             title={post.metadata.title}
             description={post.metadata.summary}
             datePublished={post.metadata.publishedAt}
             dateModified={post.metadata.publishedAt}
             image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
             author={{
-              name: person.name,
-              url: `${baseURL}${about.path}`,
-              image: `${baseURL}${person.avatar}`,
+              name: tp("name"),
+              url: `${baseURL}${ta("path")}`,
+              image: `${baseURL}/${tp("avatar")}`,
             }}
           />
           <Button data-border="rounded" href="/blog" weight="default" variant="tertiary" size="s" prefixIcon="chevronLeft">

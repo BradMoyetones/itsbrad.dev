@@ -1,16 +1,40 @@
 import { notFound } from "next/navigation";
-import { getPosts } from "@/utils/utils";
 import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text } from "@once-ui-system/core";
-import { baseURL, about, person, work } from "@/resources";
+import { baseURL, about } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
+import { getContent } from "@/utils/utils";
+import { getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "work", "projects"]);
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+// export async function generateStaticParams(): Promise<{ slug: string }[]> {
+//   const posts = await getContent("projects");
+//   return posts.map((post) => ({
+//     slug: post.slug,
+//   }));
+// }
+
+export async function generateStaticParams(): Promise<{ slug: string; locale: string }[]> {
+  // 1. Obtener todos los posts (proyectos)
+  const posts = await getContent("projects");
+
+  // 2. Obtener todos los locales/idiomas definidos por Next.js Intl
+  const locales = routing.locales;
+
+  // 3. Generar la matriz combinada de { slug, locale }
+  const params: { slug: string; locale: string }[] = [];
+
+  posts.forEach((post) => {
+    locales.forEach((locale) => {
+      params.push({
+        slug: post.slug, // El slug del proyecto
+        locale: locale,  // El código del idioma (ej: 'es', 'en')
+      });
+    });
+  });
+
+  return params;
 }
 
 export async function generateMetadata({
@@ -19,9 +43,10 @@ export async function generateMetadata({
   params: Promise<{ slug: string | string[] }>;
 }): Promise<Metadata> {
   const routeParams = await params;
+  const tw = await getTranslations('work');
   const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
-  const posts = getPosts(["src", "app", "work", "projects"])
+  const posts = await getContent("projects")
   let post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
@@ -31,7 +56,7 @@ export async function generateMetadata({
     description: post.metadata.summary,
     baseURL: baseURL,
     image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
-    path: `${work.path}/${post.slug}`,
+    path: `${tw("path")}/${post.slug}`,
   });
 }
 
@@ -39,9 +64,14 @@ export default async function Project({
   params
 }: { params: Promise<{ slug: string | string[] }> }) {
   const routeParams = await params;
+  const tw = await getTranslations('work');
+  const tp = await getTranslations('person');
+  const ta = await getTranslations('about');
+
+  const postContent = await getContent("projects");
   const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
 
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slugPath);
+  const post = postContent.find((post) => post.slug === slugPath)
 
   if (!post) {
     notFound();
@@ -57,16 +87,16 @@ export default async function Project({
       <Schema
         as="blogPosting"
         baseURL={baseURL}
-        path={`${work.path}/${post.slug}`}
+        path={`${tw("path")}/${post.slug}`}
         title={post.metadata.title}
         description={post.metadata.summary}
         datePublished={post.metadata.publishedAt}
         dateModified={post.metadata.publishedAt}
         image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
         author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
+          name: tp("name"),
+          url: `${baseURL}${ta("path")}`,
+          image: `${baseURL}${tp("avatar")}`,
         }}
       />
       <Column maxWidth="xs" gap="16">

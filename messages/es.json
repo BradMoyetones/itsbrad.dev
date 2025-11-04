@@ -6,7 +6,7 @@
         "role": "Ingeniero de Sistemas | Desarrollador Fullstack especializado en React y Node.js",
         "avatar": "/images/avatar.jpg",
         "email": "brad.moyetones@gmail.com",
-        "location": "América/Bogotá",
+        "location": "America/Bogota",
         "languages": ["Español", "Inglés"]
     },
 
@@ -37,7 +37,8 @@
         "tableOfContent": {},
         "avatar": {},
         "calendar": {
-            "link": "https://cal.com"
+            "title": "Programe una llamada",
+            "link": "https://cal.com/itsbrad"
         },
         "intro": {
             "title": "Introducción",

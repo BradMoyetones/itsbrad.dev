@@ -1,35 +1,35 @@
 ---
-title: "Quick start with Noesis"
-summary: "Noesis is a modern, developer-friendly publishing platform for digital reflections, built with Next.js, Prisma, and a rich visual editor."
+title: "Inicio rápido con Noesis"
+summary: "Noesis es una plataforma de publicación moderna, amigable para desarrolladores, para reflexiones digitales, construida con Next.js, Prisma y un rico editor visual."
 image: "/images/projects/noesis/cover-01.jpeg"
 publishedAt: "2025-06-20"
 tag: "Noesis"
 ---
 
-## About
+## Acerca de
 
-Noesis is a modern publishing platform built for developers and writers who want to share reflections, stories, or essays. It features a clean, MDX-first structure with a powerful tech stack:
+Noesis es una **plataforma de publicación moderna** construida para desarrolladores y escritores que desean compartir reflexiones, historias o ensayos. Cuenta con una estructura limpia, **MDX-first**, con un potente stack tecnológico:
 
-- **Next.js App Router**
-- **PostgreSQL** via Neon
-- **Prisma ORM**
-- **NextAuth.js** with Google and credentials
-- **Tailwind CSS** and **shadcn/ui**
-- **Plate.js** for visual editing
-- **Server Actions**
+* **Next.js App Router**
+* **PostgreSQL** a través de Neon
+* **Prisma ORM**
+* **NextAuth.js** con Google y credenciales
+* **Tailwind CSS** y **shadcn/ui**
+* **Plate.js** para la edición visual
+* **Server Actions**
 
-The project supports social features (like follows and likes), post categorization, hashtags, and email verification.
+El proyecto es compatible con características sociales (como seguidores y "me gusta"), categorización de publicaciones, hashtags y verificación de correo electrónico.
 
-## License
+## Licencia
 
-Noesis is licensed under a **Commercial Software License**.  
-This means the source code is **not open source** and **not publicly available**.
+Noesis está licenciado bajo una **Licencia de Software Comercial**.
+Esto significa que el código fuente **no es de código abierto** y **no está disponible públicamente**.
 
-You are free to use the platform as an end user, but **redistribution, modification, or reverse engineering** of the codebase is **not permitted** without explicit permission from the author.
+Eres libre de usar la plataforma como usuario final, pero la **redistribución, modificación o ingeniería inversa** de la base de código **no está permitida** sin el permiso explícito del autor.
 
-## Quick start
+## Inicio rápido
 
-Clone the repository:
+Clonar el repositorio:
 
 <CodeBlock compact marginBottom="16" codes={[
   {
@@ -38,7 +38,7 @@ Clone the repository:
   }
 ]} />
 
-Navigate into the project:
+Navegar al proyecto:
 
 <CodeBlock compact marginBottom="16" codes={[
   {
@@ -47,7 +47,7 @@ Navigate into the project:
   }
 ]} />
 
-Install the dependencies:
+Instalar las dependencias:
 
 <CodeBlock compact marginBottom="16" codes={[
   {
@@ -56,7 +56,7 @@ Install the dependencies:
   }
 ]} />
 
-Run the development server:
+Ejecutar el servidor de desarrollo:
 
 <CodeBlock compact marginBottom="16" codes={[
   {
@@ -65,9 +65,9 @@ Run the development server:
   }
 ]} />
 
-## Prisma setup
+## Configuración de Prisma
 
-Datasource and generator in `schema.prisma`:
+Datasource y generator en `schema.prisma`:
 
 <CodeBlock compact marginBottom="16" codes={[
   {
@@ -84,7 +84,7 @@ datasource db {
   }
 ]} />
 
-Initialize the Prisma client in a global-safe way:
+Inicializar el cliente de Prisma de forma global segura:
 
 <CodeBlock compact marginBottom="16" codes={[
   {
@@ -104,9 +104,9 @@ if (process.env.NODE_ENV !== 'production') {
   }
 ]} />
 
-## Authentication
+## Autenticación
 
-Noesis uses **NextAuth.js** with a combination of Google and custom credentials. Here's the API route handler:
+Noesis utiliza **NextAuth.js** con una combinación de Google y credenciales personalizadas. Aquí está el manejador de la ruta de la API:
 
 <CodeBlock compact marginBottom="16" codes={[
   {
@@ -120,7 +120,7 @@ export { handler as GET, handler as POST }`,
   }
 ]} />
 
-### Auth options
+### Opciones de autenticación
 
 <CodeBlock compact marginBottom="16" codes={[
   {
@@ -222,9 +222,9 @@ export const authOptions = {
   }
 ]} />
 
-## Email support
+## Soporte de correo electrónico
 
-SMTP config with `nodemailer`:
+Configuración SMTP con `nodemailer`:
 
 <CodeBlock compact marginBottom="16" codes={[
   {
@@ -243,7 +243,7 @@ SMTP config with `nodemailer`:
 
 ## Server Actions
 
-Example server action to get all categories:
+Ejemplo de *server action* para obtener todas las categorías:
 
 <CodeBlock compact marginBottom="16" codes={[
   {
@@ -257,12 +257,12 @@ export async function getAllCategories(): Promise<Category[]> {
   }
 ]} />
 
-## What's next
+## ¿Qué sigue?
 
-Upcoming features and ideas for future development:
+Próximas características e ideas para el desarrollo futuro:
 
-- Reaction support on posts and comments
-- Writing analytics
-- Digital signature & licensing system
-- Editor lab tests: MDXEditor, Plate.js, Milkdown, Lexical
-- Collaborative writing
+* Soporte de reacciones en publicaciones y comentarios
+* Analíticas de escritura
+* Sistema de firma digital y licencias
+* Pruebas de laboratorio del editor: MDXEditor, Plate.js, Milkdown, Lexical
+* Escritura colaborativa

@@ -54,7 +54,7 @@ const about = {
     display: true,
   },
   calendar: {
-    display: false,
+    display: true,
   },
   intro: {
     display: true,

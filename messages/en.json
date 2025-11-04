@@ -9,102 +9,108 @@
         "location": "America/Bogota",
         "languages": ["Spanish", "English"]
     },
+
     "newsletter": {
-        "title": "Subscribe to Brad's Newsletter",
+        "title": "Subscribe to {firstName}'s Newsletter",
         "description": "I occasionally write about software, technology, and share thoughts on the intersection of creativity and engineering."
     },
+
     "home": {
         "path": "/",
         "image": "/images/og/home.jpg",
         "label": "Home",
-        "title": "Brad Moyetones's Portfolio",
-        "description": "Portfolio website showcasing my work as a Systems Engineer | Fullstack Developer specialized in React & Node.js",
+        "title": "{name}'s Portfolio",
+        "description": "Portfolio website showcasing my work as a {role}",
         "headline": "Building bridges between software and code",
         "featured": {
             "title": "Recent project: Noesis",
             "href": "/work/noesis-reflection-platform"
         },
-        "subline": "I'm Brad Moyetones, a Systems Engineer | Fullstack Developer specialized in React & Node.js at Jaime Duque Park, where I build internal tools and custom systems that solve real-world problems. I enjoy learning new technologies and creating side projects that reflect both logic and introspection."
+        "subline": "I'm {name}, a {role} at Parque Jaime Duque, where I build internal tools and custom systems that solve real-world problems. I enjoy learning new technologies and creating side projects that reflect both logic and introspection."
     },
+
     "about": {
-        "path": "/es/about",
+        "path": "/about",
         "label": "About",
-        "title": "About – Brad Moyetones",
-        "description": "Meet Brad Moyetones, Systems Engineer | Fullstack Developer specialized in React & Node.js from America/Bogota",
+        "title": "About – {name}",
+        "description": "Meet {name}, a {role} from {location}",
         "avatar": {},
         "calendar": {
-            "link": "https://cal.com"
+            "title": "Schedule a call",
+            "link": "https://cal.com/itsbrad"
         },
         "intro": {
             "title": "Introduction",
             "description": "I am a systems developer passionate about creating solutions that optimize internal processes. I started as an intern at Parque Jaime Duque and quickly moved into a full-time role. Today I combine my professional experience and personal projects to grow as a fullstack developer."
         },
+
         "work": {
-        "title": "Work Experience",
-        "experiences": [
-            {
-                "company": "Parque Jaime Duque",
-                "timeframe": "2023 - Present",
-                "role": "Systems Developer",
-                "achievements": [
-                    "At Parque Jaime Duque I have had the opportunity to design solutions that directly impact the daily operations of the staff. Some of these include a meal management system with reports and analytics, the Ecotrueque platform that promotes recycling through benefits, a digital library that replaced manual Excel processes, and a scheduling tool that streamlined staff shift organization."
-                ],
-                "images": [
-                    {
-                    "src": "/images/projects/lunches/cover-01.png",
-                    "alt": "Lunch Project",
-                    "width": 16,
-                    "height": 9
-                    },
-                    {
-                    "src": "/images/projects/ecotrueque/cover-01.jpeg",
-                    "alt": "Ecotrueque Project",
-                    "width": 16,
-                    "height": 9
-                    }
-                ]
-            },
-            {
-                "company": "BradTunes",
-                "timeframe": "2024 - Present",
-                "role": "Personal Project – Desktop Music App",
-                "achievements": [
-                    "BradTunes started as a personal project where I combined several of my passions: music, programming, and user experience. I built a desktop application with Electron and React that allows users to download and organize multimedia content, integrating format conversion with YT-DLP and FFMPEG, a local database with SQLite, and a modern interface built with Shadcn/ui."
-                ],
-                "images": [
-                    {
-                    "src": "/images/projects/bradtunes/cover-02.jpeg",
-                    "alt": "BradTunes Project",
-                    "width": 16,
-                    "height": 9
-                    }
-                ]
-            },
-            {
-                "company": "Noesis",
-                "timeframe": "2025 - Present",
-                "role": "Personal Project – Knowledge Platform",
-                "achievements": [
-                    "I am currently developing Noesis, a platform designed for learning and collaborative writing. It is a fullstack application built with Next.js and PostgreSQL, integrating secure authentication with NextAuth, a rich editor with Plate.js, and a modular, responsive design with Shadcn/ui and Tailwind."
-                ],
-                "images": [
-                    {
-                        "src": "/images/projects/noesis/cover-01.jpeg",
-                        "alt": "Noesis Project",
-                        "width": 16,
-                        "height": 9
-                    },
-                    {
-                        "src": "/images/projects/noesis/cover-02.jpeg",
-                        "alt": "Noesis Project",
-                        "width": 16,
-                        "height": 9
-                    }
-                ]
-            }
-        ]
+            "title": "Work Experience",
+            "experiences": [
+                {
+                    "company": "Parque Jaime Duque",
+                    "timeframe": "2023 - Present",
+                    "role": "Systems Developer",
+                    "achievements": [
+                        "At Parque Jaime Duque I have had the opportunity to design solutions that directly impact the daily operations of the staff. Some of these include a meal management system with reports and analytics, the Ecotrueque platform that promotes recycling through benefits, a digital library that replaced manual Excel processes, and a scheduling tool that streamlined staff shift organization."
+                    ],
+                    "images": [
+                        {
+                            "src": "/images/projects/lunches/cover-01.png",
+                            "alt": "Lunch Project",
+                            "width": 16,
+                            "height": 9
+                        },
+                        {
+                            "src": "/images/projects/ecotrueque/cover-01.jpeg",
+                            "alt": "Ecotrueque Project",
+                            "width": 16,
+                            "height": 9
+                        }
+                    ]
+                },
+                {
+                    "company": "BradTunes",
+                    "timeframe": "2024 - Present",
+                    "role": "Personal Project – Desktop Music App",
+                    "achievements": [
+                        "BradTunes started as a personal project where I combined several of my passions: music, programming, and user experience. I built a desktop application with Electron and React that allows users to download and organize multimedia content, integrating format conversion with YT-DLP and FFMPEG, a local database with SQLite, and a modern interface built with Shadcn/ui."
+                    ],
+                    "images": [
+                        {
+                            "src": "/images/projects/bradtunes/cover-02.jpeg",
+                            "alt": "BradTunes Project",
+                            "width": 16,
+                            "height": 9
+                        }
+                    ]
+                },
+                {
+                    "company": "Noesis",
+                    "timeframe": "2025 - Present",
+                    "role": "Personal Project – Knowledge Platform",
+                    "achievements": [
+                        "I am currently developing Noesis, a platform designed for learning and collaborative writing. It is a fullstack application built with Next.js and PostgreSQL, integrating secure authentication with NextAuth, a rich editor with Plate.js, and a modular, responsive design with Shadcn/ui and Tailwind."
+                    ],
+                    "images": [
+                        {
+                            "src": "/images/projects/noesis/cover-01.jpeg",
+                            "alt": "Noesis Project",
+                            "width": 16,
+                            "height": 9
+                        },
+                        {
+                            "src": "/images/projects/noesis/cover-02.jpeg",
+                            "alt": "Noesis Project",
+                            "width": 16,
+                            "height": 9
+                        }
+                    ]
+                }
+            ]
         },
-            "studies": {
+
+        "studies": {
             "title": "Education",
             "institutions": [
                 {
@@ -113,7 +119,7 @@
                 },
                 {
                     "name": "Universidad CUN - Corporación Unificada Nacional de Educación Superior (Feb 29, 2024 - Jun 30, 2025)",
-                    "description": "Studied Systems Engineering."
+                    "description": "Studying Systems Engineering."
                 },
                 {
                     "name": "SENA - Servicio Nacional de Aprendizaje (Jul 19, 2021 - Jul 19, 2023)",
@@ -121,6 +127,7 @@
                 }
             ]
         },
+
         "technical": {
             "title": "Skills",
             "skills": [
@@ -142,21 +149,21 @@
         "path": "/blog",
         "label": "Blog",
         "title": "Reflections on code, growth, and building with purpose",
-        "description": "Thoughts, lessons, and discoveries from {person.name}, a self-taught developer passionate about learning, problem-solving, and pushing ideas into reality."
+        "description": "Thoughts, lessons, and discoveries from {name}, a self-taught developer passionate about learning, problem-solving, and turning ideas into reality."
     },
 
     "work": {
         "path": "/work",
-        "label": "Work",
-        "title": "Projects – {person.name}",
-        "description": "Design and development projects by {person.name}"
+        "label": "Projects",
+        "title": "Projects – {name}",
+        "description": "Design and development projects by {name}"
     },
 
     "gallery": {
         "path": "/gallery",
         "label": "Gallery",
-        "title": "Photo gallery – {person.name}",
-        "description": "A photo collection by {person.name}",
+        "title": "Photo Gallery – {name}",
+        "description": "A photo collection by {name}",
         "images": [
             { "src": "/images/gallery/horizontal-2.jpg", "alt": "image", "orientation": "horizontal" },
             { "src": "/images/gallery/horizontal-3.jpg", "alt": "image", "orientation": "horizontal" },

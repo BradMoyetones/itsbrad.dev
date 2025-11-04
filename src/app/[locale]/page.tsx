@@ -6,9 +6,12 @@ import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function Home() {
-  
+export default function Home(
+  { params: {locale}}: { params: { locale: string }}
+) {
+  setRequestLocale(locale);
   const t = useTranslations('home');
   const ta = useTranslations('about');
   const tp = useTranslations('person');
@@ -19,9 +22,9 @@ export default function Home() {
         as="webPage"
         baseURL={baseURL}
         path={t("path")}
-        title={t("title")}
-        description={t("description", {role: tp("role")})}
-        image={`/api/og/generate?title=${encodeURIComponent(t("title"))}`}
+        title={t("title", { name: tp("name") })}
+        description={t("description", { name: tp("name"), role: tp("role"), location: tp("location") })}
+        image={`/api/og/generate?title=${encodeURIComponent(t("title", { name: tp("name") }))}`}
         author={{
           name: tp("name"),
           url: `${baseURL}${t("path")}`,
@@ -45,7 +48,7 @@ export default function Home() {
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {t("subline")}
+              {t("subline", { name: tp("name"), role: tp("role") })}
             </Text>
           </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
@@ -67,7 +70,7 @@ export default function Home() {
                     size="m"
                   />
                 )}
-                {ta("title")}
+                {ta("title", { name: tp("name") })}
               </Flex>
             </Button>
           </RevealFx>

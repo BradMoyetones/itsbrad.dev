@@ -1,7 +1,7 @@
 ---
-title: "Ecotrueque – Internal Recycling Reward System"
+title: "Ecotrueque – Sistema Interno de Recompensa por Reciclaje"
 publishedAt: "2023-11-10"
-summary: "An internal application developed to digitize the Ecotrueque recycling program for Parque Jaime Duque collaborators, automating material tracking and benefit redemption."
+summary: "Una aplicación interna desarrollada para digitalizar el programa de reciclaje Ecotrueque para los colaboradores del Parque Jaime Duque, automatizando el seguimiento de materiales y la redención de beneficios."
 images:
   - "/images/projects/ecotrueque/cover-01.jpeg"
   - "/images/projects/ecotrueque/cover-02.png"
@@ -9,43 +9,42 @@ images:
   - "/images/projects/ecotrueque/cover-04.jpeg"
 team:
   - name: "Brad Moyetones"
-    role: "Fullstack Developer"
+    role: "Desarrollador Fullstack"
     avatar: "/images/avatar.jpg"
     linkedIn: "https://www.linkedin.com/in/brad-moyetones/"
 ---
 
-## Overview
+## Resumen
 
-Ecotrueque is an internal recycling initiative at **Parque Jaime Duque**, where employees can exchange recyclable materials for points and redeemable benefits like cinema tickets, snacks, and lunch bonuses.
+Ecotrueque es una iniciativa interna de reciclaje en el **Parque Jaime Duque**, donde los empleados pueden intercambiar materiales reciclables por puntos y beneficios canjeables como boletos de cine, refrigerios y bonos de almuerzo.
 
-Previously, the program relied on Excel spreadsheets to manually track contributions. As participation grew and the number of entries during open days increased, this manual system became unsustainable and prone to errors. This application was created to centralize and automate the entire process.
+Anteriormente, el programa se basaba en hojas de cálculo de Excel para realizar un seguimiento manual de las contribuciones. A medida que creció la participación y aumentó el número de entradas durante los días de apertura, este sistema manual se volvió insostenible y propenso a errores. Esta aplicación fue creada para centralizar y automatizar todo el proceso.
 
-## Key Features
+## Características Clave
 
-- **Material Registration**: Staff can log recyclable material deliveries during Ecotrueque days. Each material type is associated with a specific point value and weight.
-- **User Accounts**: Collaborators have login credentials to view their personal dashboards, showing accumulated points, total weight delivered, and history.
-- **Point Redemption System**: Employees can exchange their points for benefits such as movie tickets, snacks, or lunch coupons directly through the platform.
-- **Real-Time Reports for Partners**: The system generates structured reports for **Prodensa**, the program’s environmental partner, to show impact metrics.
-- **Lunch System Integration**: When employees register for lunch, the system automatically deducts 250g from their recycling balance, streamlining the benefits logic between departments.
+* **Registro de Materiales**: El personal puede registrar las entregas de material reciclable durante los días de Ecotrueque. Cada tipo de material está asociado con un valor de punto y un peso específicos.
+* **Cuentas de Usuario**: Los colaboradores tienen credenciales de inicio de sesión para ver sus paneles personales, que muestran los puntos acumulados, el peso total entregado y el historial.
+* **Sistema de Canje de Puntos**: Los empleados pueden canjear sus puntos por beneficios como entradas de cine, refrigerios o cupones de almuerzo directamente a través de la plataforma.
+* **Informes en Tiempo Real para Socios**: El sistema genera informes estructurados para **Prodensa**, el socio ambiental del programa, para mostrar métricas de impacto.
+* **Integración con el Sistema de Almuerzos**: Cuando los empleados se registran para el almuerzo, el sistema deduce automáticamente 250g de su saldo de reciclaje, agilizando la lógica de beneficios entre departamentos.
 
-## Technologies Used
+## Tecnologías Utilizadas
 
-- **PHP (Slim Framework)**: Backend routing and API endpoints.
-- **Eloquent ORM**: Database modeling and relationships.
-- **React + TypeScript + Vite**: Frontend for both users and administrators.
-- **MySQL**: Database for materials, points, users, and transaction history.
-- **Tailwind CSS**: For a clean and responsive UI.
-- **Charting Library (Recharts)**: For visual data breakdowns in the admin panel.
+* **PHP (Slim Framework)**: Enrutamiento de *backend* y *endpoints* de API.
+* **Eloquent ORM**: Modelado y relaciones de la base de datos.
+* **React + TypeScript + Vite**: *Frontend* tanto para usuarios como para administradores.
+* **MySQL**: Base de datos para materiales, puntos, usuarios e historial de transacciones.
+* **Tailwind CSS**: Para una interfaz de usuario limpia y adaptable (*responsive*).
+* **Librería de Gráficos (Recharts)**: Para desgloses visuales de datos en el panel de administración.
 
-## Challenges and Learnings
+## Desafíos y Aprendizajes
 
-The biggest challenge was designing a flexible system that could scale with user growth and support integrations with other internal tools. Mapping real-world recycling rules into digital logic (points by weight, benefit tracking, etc.) required close coordination with HR and sustainability teams.
+El mayor desafío fue diseñar un sistema flexible que pudiera escalar con el crecimiento de usuarios y soportar integraciones con otras herramientas internas. Mapear las reglas de reciclaje del mundo real a la lógica digital (puntos por peso, seguimiento de beneficios, etc.) requirió una estrecha coordinación con los equipos de RR. HH. y sostenibilidad.
 
-Integrating the Ecotrueque platform with the existing lunch system also brought performance considerations, as both systems had to communicate and synchronize real-time actions like balance deductions.
+Integrar la plataforma Ecotrueque con el sistema de almuerzos existente también trajo consigo consideraciones de rendimiento, ya que ambos sistemas debían comunicarse y sincronizar acciones en tiempo real, como las deducciones de saldo.
 
-## Outcome
+## Resultado
 
-Ecotrueque is now a fully digital platform used by all park collaborators. It reduced admin workload, eliminated manual errors, and made participation in the recycling program more accessible and engaging.
+Ecotrueque es ahora una plataforma totalmente digital utilizada por todos los colaboradores del parque. Redujo la carga de trabajo administrativo, eliminó los errores manuales e hizo que la participación en el programa de reciclaje fuera más accesible y atractiva.
 
-The automatic integration with the lunch system alone saved hours of manual tracking by the payroll team, while also increasing transparency and accountability for both employees and management.
-
+Solo la integración automática con el sistema de almuerzos ahorró horas de seguimiento manual por parte del equipo de nóminas, al tiempo que aumentó la transparencia y la rendición de cuentas tanto para los empleados como para la gerencia.

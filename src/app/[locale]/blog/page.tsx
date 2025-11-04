@@ -2,11 +2,13 @@ import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL, newsletter } from "@/resources";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export async function generateMetadata() {
-  const tb = await getTranslations('blog'); // ✅ versión server-safe de useTranslations
-  const tp = await getTranslations('person'); // ✅ versión server-safe de useTranslations
+export async function generateMetadata(
+  { params: {locale}}: { params: { locale: string }}
+) {
+  const tb = await getTranslations('blog');
+  const tp = await getTranslations('person');
 
   return {
     title: tb('title'),
@@ -17,30 +19,35 @@ export async function generateMetadata() {
       images: [
         `/api/og/generate?title=${encodeURIComponent(tb('title'))}`
       ],
-      url: `${baseURL}${tb('path')}`,
+      url: `${baseURL}/${locale}${tb('path')}`,
     },
   };
 }
 
-export default function Blog() {
+export default async function Blog(
+  { params: {locale}}: { params: { locale: string }}
+) {
+  const tb = await getTranslations('blog');
+  const tp = await getTranslations('person');
   
+  setRequestLocale(locale)
   return (
     <Column maxWidth="s">
       <Schema
         as="blogPosting"
         baseURL={baseURL}
-        title={blog.title}
-        description={blog.description}
-        path={blog.path}
-        image={`/api/og/generate?title=${encodeURIComponent(blog.title)}`}
+        title={tb("title")}
+        description={tb("description", { name: tp("name") })}
+        path={tb("path")}
+        image={`/api/og/generate?title=${encodeURIComponent(tb("title"))}`}
         author={{
-          name: person.name,
+          name: tp("name"),
           url: `${baseURL}/blog`,
-          image: `${baseURL}${person.avatar}`,
+          image: `${baseURL}${tp("avatar")}`,
         }}
       />
       <Heading marginBottom="l" variant="display-strong-s">
-        {blog.title}
+        {tb("title")}
       </Heading>
       <Column
 				fillWidth flex={1}>

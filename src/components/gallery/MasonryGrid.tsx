@@ -3,7 +3,7 @@
 import Masonry from "react-masonry-css";
 import { Media } from "@once-ui-system/core";
 import styles from "./Gallery.module.scss";
-import { gallery } from "@/resources";
+import { useTranslations } from "next-intl";
 
 export default function MasonryGrid() {
   const breakpointColumnsObj = {
@@ -11,13 +11,17 @@ export default function MasonryGrid() {
     720: 1,
   };
 
+  const tg = useTranslations("gallery")
+
+  const images = tg.raw("images") as any[]
+
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}
       className={styles.masonryGrid}
       columnClassName={styles.masonryGridColumn}
     >
-      {gallery.images.map((image, index) => (
+      {images.map((image, index) => (
         <Media
           priority={index < 10}
           sizes="(max-width: 560px) 100vw, 50vw"
