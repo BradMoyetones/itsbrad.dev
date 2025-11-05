@@ -30,7 +30,7 @@ const social = [
   {
     name: "Web",
     icon: "globe",
-    link: "https://portfolio-brad.vercel.app",
+    link: "https://itsbrad.dev",
   },
   {
     name: "Email",
