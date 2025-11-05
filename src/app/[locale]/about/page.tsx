@@ -16,7 +16,8 @@ import { baseURL, about, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 export async function generateMetadata() {
   const ta = await getTranslations('about');
@@ -31,9 +32,11 @@ export async function generateMetadata() {
   });
 }
 
-export default async function About() {
-  const ta = await getTranslations('about');
-  const tp = await getTranslations('person');
+export default function About({ params: {locale}}: { params: { locale: string }}) {
+  setRequestLocale(locale)
+  
+  const ta = useTranslations('about');
+  const tp = useTranslations('person');
 
   const workExperiences = ta.raw("work.experiences") as any[];
   const studiesInstitutions = ta.raw("studies.institutions") as any[];
