@@ -4,6 +4,11 @@ import '@fontsource/geist-mono';
 import '@fontsource/ibm-plex-serif';
 import '@fontsource/caveat';
 import '../styles/globals.css';
+
+import SiteHeader from '@/components/SiteHeader.astro';
+import SiteFooterCad from '@/components/SiteFooterCad.astro';
+import { SiteBottomNav } from '@/components/site-bottom-nav';
+import { ScrollToTop } from '@/components/scroll-to-top';
 ---
 <!doctype html>
 <html lang="en">
@@ -34,6 +39,18 @@ import '../styles/globals.css';
 		</script>
 	</head>
 	<body class="bg-background text-foreground antialiased selection:bg-selection selection:text-selection-foreground">
-		<slot />
+		<div class="group/layout relative isolate">
+			<SiteHeader />
+			<main class="max-w-screen overflow-x-clip px-2">
+				<slot />
+			</main>
+			<SiteFooterCad />
+			<div class="pointer-events-none fixed inset-x-0 bottom-0 z-50" aria-hidden="true">
+				<div class="h-(--fade-bottom-height) bg-linear-to-b from-transparent to-background mask-linear-[to_top,var(--background)_25%,transparent] backdrop-blur-[1px]"></div>
+				<div class="bg-background pb-[env(safe-area-inset-bottom,0)]"></div>
+			</div>
+			<SiteBottomNav client:load />
+			<ScrollToTop client:load />
+		</div>
 	</body>
 </html>

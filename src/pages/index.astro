@@ -1,11 +1,20 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout>
-	<Welcome />
+  <div class="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
+    <div class="mx-auto md:max-w-3xl">
+      <div class="py-20 text-center">
+        <h1 class="text-4xl font-bold">Welcome to Brad's Portfolio</h1>
+        <p class="mt-4 text-muted-foreground">Portfolio content goes here...</p>
+      </div>
+      
+      <div class="stripe-divider h-(--separator-height) w-full border-x"></div>
+      
+      <div class="py-20 text-center">
+        <p>Section 2</p>
+      </div>
+    </div>
+  </div>
 </Layout>

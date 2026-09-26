@@ -1,0 +1,207 @@
+---
+import { LICENSE, SOURCE_CODE_GITHUB_URL } from "@/config/site"
+import { getBuildInfo, getStack } from "@/lib/build-info"
+import { cn } from "@/lib/utils"
+import { Separator } from "@/components/ui/separator"
+import { DmcaIcon, GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons"
+import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
+import { SOCIAL } from "@/features/portfolio/data/social-links"
+import { ChanhDaiMark } from "@/components/chanhdai-mark"
+
+// import packageJson from "../../package.json"
+
+const INSPIRED_BY = [
+  "Tailwind CSS",
+  "shadcn/ui",
+  "Vercel",
+  "Evil Charts",
+  "Devouring Details",
+  "Skiper UI",
+  "Making Software",
+  "shadcncraft",
+]
+
+const OPENPANEL_URL =
+  "https://openpanel.dev?utm_source=chanhdai.com&utm_medium=referral&utm_campaign=footer"
+
+const SITE_TITLE = "chanhdai.com"
+const SITE_SUBTITLE = "A pixel-perfect dev portfolio and shadcn registry."
+
+const xLink = SOCIAL.x
+const githubLink = SOCIAL.github
+const linkedinLink = SOCIAL.linkedin
+
+const build = getBuildInfo()
+const stack = getStack()
+---
+
+<footer class="max-w-screen overflow-x-clip px-2">
+  <div class="mx-auto border-x group-has-data-[slot=layout-wide]/layout:container md:max-w-3xl">
+    <div class="screen-line-top screen-line-bottom screen-line-top-border before:z-1">
+      <div class="stripe-divider h-12"></div>
+    </div>
+
+    <div class="relative">
+      <div class="screen-line-bottom flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-4 py-3 font-mono text-sm">
+        <span class="font-medium">{SITE_TITLE}</span>
+        <span class="font-sans text-muted-foreground">
+          {SITE_SUBTITLE}
+        </span>
+      </div>
+
+      <dl class="grid grid-cols-2 gap-px bg-line font-mono md:grid-cols-4">
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">Crafted by</dt>
+          <dd class="text-sm">
+            <a class="link-underline" href={xLink.href} target="_blank" rel="noopener">
+              {xLink.handle}
+            </a>
+          </dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">Build</dt>
+          <dd class="text-sm">
+            {build.commitShortSha ? (
+              <>
+                {build.commitUrl ? (
+                  <a class="link-underline" href={build.commitUrl} target="_blank" rel="noopener">{build.commitShortSha}</a>
+                ) : (
+                  build.commitShortSha
+                )}
+                {build.environment !== "production" && (
+                  <span class="text-muted-foreground"> ({build.environment === "development" ? "local" : build.environment})</span>
+                )}
+              </>
+            ) : (
+              <span class="text-muted-foreground">unavailable</span>
+            )}
+          </dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">Date</dt>
+          <dd class="text-sm">
+            <time datetime={build.date}>{build.date}</time>
+          </dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">Registry</dt>
+          <dd class="text-sm">0 items</dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">Deployed on</dt>
+          <dd class="text-sm">
+            <span class="font-sans" aria-hidden="true">▲</span>
+            <span class="sr-only">Vercel</span>
+          </dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">Source code</dt>
+          <dd class="text-sm">
+            <a class="link-underline" href={SOURCE_CODE_GITHUB_URL} target="_blank" rel="noopener">GitHub</a>
+          </dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">License</dt>
+          <dd class="text-sm">
+            <a class="link-underline" href={LICENSE.url} target="_blank" rel="noopener">{LICENSE.name}</a>
+          </dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">Typeface</dt>
+          <dd class="text-sm">Geist</dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3 col-span-2">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">Stack</dt>
+          <dd class="text-sm">
+            <ul class="flex flex-col gap-0.5">
+              {stack.map((entry) => (
+                <li>{entry}</li>
+              ))}
+            </ul>
+          </dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">Analytics</dt>
+          <dd class="text-sm">
+            <ul class="flex flex-col gap-0.5">
+              <li>
+                <a class="link-underline" href={OPENPANEL_URL} target="_blank" rel="noopener">OpenPanel</a>
+              </li>
+              <li>Google Analytics</li>
+            </ul>
+          </dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">For agents</dt>
+          <dd class="text-sm">
+            <ul class="flex flex-col gap-0.5">
+              <li><a class="link-underline" href="/llms.txt" target="_blank" rel="noopener">llms.txt</a></li>
+              <li><a class="link-underline" href="/index.md" target="_blank" rel="noopener">index.md</a></li>
+            </ul>
+          </dd>
+        </div>
+
+        <div class="flex min-w-0 flex-col gap-1 bg-background px-4 py-3 col-span-2 md:col-span-4">
+          <dt class="text-[0.625rem]/4 font-medium tracking-wider text-muted-foreground uppercase">Inspired by</dt>
+          <dd class="text-sm">
+            <ol class="-mx-4 grid grid-cols-2 gap-x-px gap-y-0.5 font-sans md:grid-cols-4">
+              {INSPIRED_BY.map((name, index) => (
+                <li class="flex gap-2 px-4">
+                  <span class="font-mono text-muted-foreground/80" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  {name}
+                </li>
+              ))}
+            </ol>
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="screen-line-top h-4"></div>
+
+    <div class="screen-line-top screen-line-bottom flex items-center gap-3 screen-line-bottom-border px-4 py-3 text-muted-foreground">
+      <a href="/" class="mr-auto text-muted-foreground transition-[color] hover:text-foreground" aria-label="Home">
+        <ChanhDaiMark className="h-4" />
+      </a>
+
+      <a class="flex items-center transition-[color] hover:text-foreground" href={xLink.href} target="_blank" rel="noopener" aria-label="X Profile">
+        <XIcon className="size-4" />
+      </a>
+
+      <Separator orientation="vertical" className="data-vertical:h-4 data-vertical:self-center" />
+
+      <a class="flex items-center transition-[color] hover:text-foreground" href={githubLink.href} target="_blank" rel="noopener" aria-label="GitHub Profile">
+        <GitHubIcon className="size-4" />
+      </a>
+
+      <Separator orientation="vertical" className="data-vertical:h-4 data-vertical:self-center" />
+
+      <a class="flex items-center transition-[color] hover:text-foreground" href={linkedinLink.href} target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+        <LinkedInIcon className="size-4" />
+      </a>
+
+      <Separator orientation="vertical" className="data-vertical:h-4 data-vertical:self-center" />
+
+      <a class="flex items-center transition-[color] hover:text-foreground" href={import.meta.env.PUBLIC_DMCA_URL || "https://www.dmca.com/ProtectionPro.aspx"} target="_blank" rel="noopener" aria-label="DMCA.com Protection Status">
+        <DmcaIcon className="h-4 w-auto" />
+      </a>
+    </div>
+  </div>
+
+  <SiteFooterInteractiveLogotype client:load />
+
+  <div class="h-(--fade-bottom-height)"></div>
+  <div class="pb-[env(safe-area-inset-bottom,0)]"></div>
+</footer>

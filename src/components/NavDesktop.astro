@@ -1,0 +1,13 @@
+---
+import type { NavItem } from "@/types/nav"
+import { Nav } from "@/components/nav"
+
+interface Props {
+  items: NavItem[]
+}
+
+const { items } = Astro.props
+const pathname = Astro.url.pathname
+---
+
+<Nav className="max-sm:hidden" items={items} activeId={pathname} client:load />
