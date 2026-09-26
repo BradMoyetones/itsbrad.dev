@@ -1,8 +1,19 @@
-# Brad Portfolio
+# My Portfolio
 
-This is a portfolio website built using React. It showcases various projects and skills of the developer. This project is 
-designed with a clean and modern interface using MDX for content management and next-intl for internationalization support.
+Rebuilding portfolio site using Astro.
 
-<div style="max-width: 500px; margin: auto; border-radius: 50%; overflow: hidden;">
-  <img src="./public/images/line_avatar.jpg" alt="Brad Avatar" align="center" />
-</div>
+Check out [Astro's documentation](https://docs.astro.build) to learn more.
+
+## Getting Started
+
+### Install Dependencies
+
+```sh
+pnpm i
+```
+
+### Run the Site
+
+```sh
+pnpm dev
+```
