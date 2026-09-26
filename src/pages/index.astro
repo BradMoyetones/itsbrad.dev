@@ -1,20 +1,40 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { ProfileHeader } from '@/features/portfolio/components/profile-header';
+import { SocialLinks } from '@/features/portfolio/components/social-links';
+import { Overview } from '@/features/portfolio/components/overview';
+import { GitHubContributions } from '@/features/portfolio/components/github-contributions';
+import { Blog } from '@/features/portfolio/components/blog';
+import { TechStack } from '@/features/portfolio/components/tech-stack';
+import { Experiences } from '@/features/portfolio/components/experiences';
+import { Education } from '@/features/portfolio/components/education';
+import { Projects } from '@/features/portfolio/components/projects';
 ---
 
-<Layout>
+<Layout title="Brad Moyetones - Frontend Engineer">
   <div class="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
     <div class="mx-auto md:max-w-3xl">
-      <div class="py-20 text-center">
-        <h1 class="text-4xl font-bold">Welcome to Brad's Portfolio</h1>
-        <p class="mt-4 text-muted-foreground">Portfolio content goes here...</p>
-      </div>
-      
+      <ProfileHeader client:load />
       <div class="stripe-divider h-(--separator-height) w-full border-x"></div>
       
-      <div class="py-20 text-center">
-        <p>Section 2</p>
-      </div>
+      <SocialLinks client:load />
+      <Overview client:load />
+      <GitHubContributions client:load />
+      <div class="stripe-divider h-(--separator-height) w-full border-x"></div>
+      
+      <Blog />
+      <div class="stripe-divider h-(--separator-height) w-full border-x"></div>
+      
+      <TechStack />
+      <div class="stripe-divider h-(--separator-height) w-full border-x"></div>
+      
+      <Experiences client:load />
+      <div class="stripe-divider h-(--separator-height) w-full border-x"></div>
+      
+      <Education client:load />
+      <div class="stripe-divider h-(--separator-height) w-full border-x"></div>
+      
+      <Projects client:load />
     </div>
   </div>
 </Layout>

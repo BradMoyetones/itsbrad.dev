@@ -9,20 +9,17 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-// import { haptic } from "@/registry/lib/haptic"
 
 export function NavMobile({ items }: { items: NavItem[] }) {
   const [open, setOpen] = useState(false)
+  const isDesktop = useMediaQuery("(min-width: 40rem)") // sm breakpoint
   const [pathname, setPathname] = useState("")
 
   useEffect(() => {
     setPathname(window.location.pathname)
   }, [])
 
-  const isDesktop = useMediaQuery("(min-width: 40rem)") // sm breakpoint
-
   const handleOpenChange = useCallback((open: boolean) => {
-    // haptic()
     setOpen(open)
   }, [])
 

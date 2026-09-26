@@ -1,65 +1,46 @@
 import type { User } from "@/features/portfolio/types/user"
 
 export const USER: User = {
-  firstName: "Chánh Đại",
-  lastName: "Nguyễn",
-  displayName: "Chánh Đại",
-  username: "ncdai",
+  firstName: "Brad",
+  lastName: "Moyetones",
+  displayName: "Brad Moyetones",
+  username: "bradmoyetones",
   gender: "male",
   pronouns: "he/him",
-  bio: "Creating with code. Small details matter.",
+  bio: "Software Engineer & Creator",
   flipSentences: [
-    "Creating with code. Small details matter.",
-    "Design Engineer.",
-    "Open source contributor.",
-    "I own a vintage iPhone.",
+    "Software Engineer",
+    "Creative Developer",
+    "Open Source Enthusiast",
   ],
-  address: "Ho Chi Minh City, Viet Nam",
-  phoneNumberB64: "Kzg0Nzc3ODg4MTQ4", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
-  emailB64: "ZGFpQGNoYW5oZGFpLmNvbQ==", // base64 encoded
-  website: "https://chanhdai.com",
-  jobTitle: "Design Engineer",
+  address: "Planet Earth",
+  phoneNumberB64: "", 
+  emailB64: "", 
+  website: "https://bradmoyetones.com",
+  jobTitle: "Software Engineer",
   jobs: [
     {
-      title: "Design Engineer",
-      company: "shadcncraft",
-      website: "https://shadcncraft.com?atp=ncdai",
-      experienceId: "shadcncraft",
-    },
-    {
-      title: "Founder",
-      company: "Quaric",
-      website: "https://quaric.com",
-      experienceId: "quaric",
-    },
+      title: "Software Engineer",
+      company: "Company",
+      website: "#",
+      experienceId: "current",
+    }
   ],
-  about: `- I’m Chánh Đại (call me Dai) — a Design Engineer with 5+ years of experience, known for pixel-perfect execution and an obsessive attention to detail.
-- Passionate about exploring new technologies and turning ideas into reality through polished, thoughtfully crafted projects.
-- Creator of [chanhdai.com](https://github.com/ncdai/chanhdai.com) (2.2k stars), [React Wheel Picker](https://react-wheel-picker.chanhdai.com) (50k+ weekly downloads, ▲ Vercel OSS Program), and [ZaDark](https://zadark.com) (80k+ downloads, 30k+ users) — peak metrics.
+  about: `- I’m Brad Moyetones — a Software Engineer passionate about web development, design, and user experience.
+- Currently building awesome web applications and expanding my knowledge of modern frameworks like Astro, Next.js, and React.
 `,
-  avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.webp",
-  avatarSketch: "https://assets.chanhdai.com/images/avatar-sketch.webp",
-  avatarVariants: {
-    lightOff: "https://assets.chanhdai.com/images/avatar-light-off.webp",
-    lightOn: "https://assets.chanhdai.com/images/avatar-light-on.webp",
-    darkOff: "https://assets.chanhdai.com/images/avatar-dark-off.webp",
-    darkOn: "https://assets.chanhdai.com/images/avatar-dark-on.webp",
-  },
-  ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?t=1778602757",
-  namePronunciationUrl: "https://assets.chanhdai.com/audio/chanhdai.mp3",
-  timeZone: "Asia/Ho_Chi_Minh",
+  avatar: "https://avatars.githubusercontent.com/u/1?v=4", // Placeholder avatar
+  avatarSketch: "https://avatars.githubusercontent.com/u/1?v=4",
+  avatarVariants: {},
+  ogImage: "",
+  namePronunciationUrl: "",
+  timeZone: "UTC",
   keywords: [
-    "ncdai",
-    "nguyenchanhdai",
-    "nguyen chanh dai",
-    "chanhdai",
-    "chanh dai",
-    "iamncdai",
-    "quaric",
-    "zadark",
-    "nguyễn chánh đại",
-    "chánh đại",
+    "bradmoyetones",
+    "brad moyetones",
+    "brad",
+    "software engineer",
+    "developer",
   ],
-  dateCreated: "2023-10-20", // YYYY-MM-DD
+  dateCreated: "2024-01-01",
 }

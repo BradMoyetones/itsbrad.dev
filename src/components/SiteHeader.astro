@@ -1,38 +1,22 @@
 ---
 import { MAIN_NAV } from "@/config/site"
 import { Separator } from "@/components/ui/separator"
-import { ChanhDaiMark } from "@/components/chanhdai-mark"
 import NavDesktop from "@/components/NavDesktop.astro"
-import NavItemGitHub from "@/components/NavItemGitHub.astro"
 import { ThemeToggle } from "@/components/theme-toggle"
-
-// import BrandContextMenu from "@/components/brand-context-menu"
-// import CommandMenu from "@/components/command-menu"
+import { BradMark } from "@/components/brad-mark"
 ---
 
 <header class="sticky top-0 z-50 max-w-screen overflow-x-clip bg-background px-2">
   <div class="screen-line-top screen-line-bottom mx-auto flex h-(--header-height) items-center gap-2 border-x screen-line-bottom-border screen-line-top-border pr-2 pl-4 group-has-data-[slot=layout-wide]/layout:container after:z-1 sm:gap-4 md:max-w-3xl">
-    <!-- <BrandContextMenu client:load> -->
       <a href="/" aria-label="Home">
-        <ChanhDaiMark className="h-6 shrink-0" />
+        <BradMark className="h-6 shrink-0" />
       </a>
-    <!-- </BrandContextMenu> -->
 
     <div class="flex-1"></div>
 
     <NavDesktop items={MAIN_NAV} />
 
-    <div class="flex items-center max-sm:*:data-[slot=command-menu-trigger]:hidden">
-      <Separator
-        orientation="vertical"
-        className="mr-2 max-sm:hidden data-vertical:h-5 data-vertical:self-center"
-      />
-      <!-- <CommandMenu client:load /> -->
-      <Separator
-        orientation="vertical"
-        className="mx-2 max-sm:hidden data-vertical:h-5 data-vertical:self-center"
-      />
-      <NavItemGitHub />
+    <div class="flex items-center">
       <Separator
         orientation="vertical"
         className="mx-2 data-vertical:h-5 data-vertical:self-center"

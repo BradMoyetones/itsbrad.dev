@@ -27,20 +27,20 @@ export function Nav({
               : activeId?.startsWith(href))
 
         return (
-          <NavItem
+          <NavItemComponent
             key={href}
             href={href}
             aria-current={isActive ? "page" : undefined}
           >
             {title}
-          </NavItem>
+          </NavItemComponent>
         )
       })}
     </nav>
   )
 }
 
-export function NavItem({
+export function NavItemComponent({
   className,
   ...props
 }: React.ComponentProps<"a">) {
