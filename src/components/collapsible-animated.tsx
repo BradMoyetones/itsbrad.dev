@@ -8,24 +8,11 @@ import type {
   ChevronDownIconProps,
 } from "@/components/animated-icons/chevron-down-icon"
 import { ChevronDownIcon } from "@/components/animated-icons/chevron-down-icon"
-import { ChevronsUpDown } from "lucide-react"
-
-type ChevronsUpDownIconHandle = {
-  startAnimation: () => void
-  stopAnimation: () => void
-}
-
-export type ChevronsUpDownIconProps = React.ComponentProps<typeof ChevronsUpDown>
-
-const ChevronsUpDownIcon = React.forwardRef<ChevronsUpDownIconHandle, ChevronsUpDownIconProps>(
-  (props, ref) => {
-    React.useImperativeHandle(ref, () => ({
-      startAnimation: () => {},
-      stopAnimation: () => {},
-    }))
-    return <ChevronsUpDown {...props} />
-  }
-)
+import type {
+  ChevronsUpDownIconHandle,
+  ChevronsUpDownIconProps,
+} from "@/components/animated-icons/chevrons-up-down-icon"
+import { ChevronsUpDownIcon } from "@/components/animated-icons/chevrons-up-down-icon"
 
 type CollapsibleContextType = {
   open: boolean
