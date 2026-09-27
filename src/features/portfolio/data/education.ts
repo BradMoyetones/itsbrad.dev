@@ -9,7 +9,7 @@ export const EDUCATION: Education[] = [
       start: "02.2024",
       end: "06.2025",
     },
-    description: "Estudios en Ingeniería de Sistemas.",
+    description: `- Estudios en Ingeniería de Sistemas.`,
   },
   {
     id: "sena",
@@ -19,7 +19,7 @@ export const EDUCATION: Education[] = [
       start: "07.2021",
       end: "07.2023",
     },
-    description: "Este programa marcó el inicio de mi carrera como desarrollador full-stack y me proporcionó las bases para continuar desarrollándome profesionalmente en el área de software.",
+    description: `- Este programa marcó el inicio de mi carrera como desarrollador full-stack y me proporcionó las bases para continuar desarrollándome profesionalmente en el área de software.`,
   },
   {
     id: "autodidacta",
@@ -28,6 +28,6 @@ export const EDUCATION: Education[] = [
     period: {
       start: "2020",
     },
-    description: "Amplié mis conocimientos en tecnologías web modernas como React, Node.js y Next.js a través de proyectos personales, práctica constante y autoestudio.",
+    description: `- Amplié mis conocimientos en tecnologías web modernas como React, Node.js y Next.js a través de proyectos personales, práctica constante y autoestudio.`,
   }
 ]

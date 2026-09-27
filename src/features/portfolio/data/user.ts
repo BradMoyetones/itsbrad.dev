@@ -33,7 +33,11 @@ export const USER: User = {
       experienceId: "jaime-duque",
     }
   ],
-  about: "Soy un desarrollador de software al que le apasiona crear soluciones innovadoras y eficientes. Me gusta construir productos que no solo funcionen correctamente, sino que también tengan una buena experiencia de usuario y una interfaz cuidadosamente diseñada.\\n\\nTengo una especial atención por los detalles y una fuerte obsesión con el diseño pixel-perfect. Disfruto explorando tecnologías modernas, aprovechando herramientas existentes y combinándolas de distintas maneras para crear experiencias y soluciones propias.\\n\\nUna prueba de esta filosofía es este mismo portafolio, inspirado fuertemente en el trabajo de Chánh Đại, pero adaptado a mi propia identidad, necesidades y forma de trabajar.",
+  about: `Soy un desarrollador de software al que le apasiona crear soluciones innovadoras y eficientes. Me gusta construir productos que no solo funcionen correctamente, sino que también tengan una buena experiencia de usuario y una interfaz cuidadosamente diseñada.
+
+Tengo una especial atención por los detalles y una fuerte obsesión con el diseño pixel-perfect. Disfruto explorando tecnologías modernas, aprovechando herramientas existentes y combinándolas de distintas maneras para crear experiencias y soluciones propias.
+
+Una prueba de esta filosofía es este mismo portafolio, inspirado fuertemente en el trabajo de Chánh Đại, pero adaptado a mi propia identidad, necesidades y forma de trabajar.`,
   avatar: "/avatar.jpg",
   avatarSketch: "/avatar.jpg",
   avatarVariants: {},
