@@ -1,7 +1,7 @@
 import { LICENSE, SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
-import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons"
+import { GitHubIcon, LinkedInIcon, InstagramIcon } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
 import { SOCIAL } from "@/features/portfolio/data/social-links"
 import { BradMark } from "@/components/brad-mark"
@@ -9,7 +9,7 @@ import { BradMark } from "@/components/brad-mark"
 import { USER } from "@/features/portfolio/data/user"
 
 export function SiteFooterCad() {
-  const xLink = SOCIAL.x
+  const instagramLink = SOCIAL.instagram
   const githubLink = SOCIAL.github
   const linkedinLink = SOCIAL.linkedin
 
@@ -42,12 +42,12 @@ export function SiteFooterCad() {
 
           <a
             className="flex items-center transition-[color] hover:text-foreground"
-            href={xLink.href}
+            href={instagramLink.href}
             target="_blank"
             rel="noopener"
-            aria-label="X Profile"
+            aria-label="Instagram Profile"
           >
-            <XIcon className="size-4" />
+            <InstagramIcon className="size-4" />
           </a>
 
           <Separator

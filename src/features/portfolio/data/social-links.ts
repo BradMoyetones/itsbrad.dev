@@ -1,22 +1,22 @@
 import type { SocialProfile } from "@/features/portfolio/types/social-links"
 
 export const SOCIAL = {
-  x: {
-    title: "X",
-    handle: "@tu_usuario",
-    href: "https://x.com/tu_usuario",
-    sameAs: true,
-  },
   github: {
     title: "GitHub",
-    handle: "tu_usuario",
-    href: "https://github.com/tu_usuario",
+    handle: "BradMoyetones",
+    href: "https://github.com/BradMoyetones",
     sameAs: true,
   },
   linkedin: {
     title: "LinkedIn",
-    handle: "tu_usuario",
-    href: "https://linkedin.com/in/tu_usuario",
+    handle: "brad-moyetones",
+    href: "https://www.linkedin.com/in/brad-moyetones/",
+    sameAs: true,
+  },
+  instagram: {
+    title: "Instagram",
+    handle: "its.bradn",
+    href: "https://www.instagram.com/its.bradn/",
     sameAs: true,
   },
 } satisfies Record<string, SocialProfile>
