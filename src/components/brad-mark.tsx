@@ -1,18 +1,18 @@
-import React from "react"
+import React from 'react';
 
-export function BradMark(props: React.ComponentProps<"svg">) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 576 320"
-      aria-hidden
-      {...props}
-    >
-      <path
-        fill="currentColor"
-        d="M0 0h192v64H0z M0 64h64v64H0z M128 64h64v64h-64z M0 128h192v64H0z M0 192h64v64H0z M128 192h64v64h-64z M0 256h192v64H0z M256 0h64v320h-64z M320 64h64v64h-64z M384 128h64v64h-64z M448 64h64v64h-64z M512 0h64v320h-64z"
-      />
-    </svg>
-  )
+export function BradMark(props: React.ComponentProps<'svg'>) {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 156 80"
+            aria-hidden {...props}
+        >
+            <path
+                d="M75.5195 80V0H91.5195V16H107.52V32H123.52V48H107.52V32H91.5195V80H75.5195ZM139.52 80V32H123.52V16H139.52V0H155.52V80H139.52Z"
+                fill="currentColor"
+            />
+            <path d="M0 80V0H48V16H64V64H48V80H0ZM16 32H47.36V16H16V32ZM16 64H47.36V48H16V64Z" fill="currentColor" />
+        </svg>
+    );
 }
