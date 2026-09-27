@@ -1,46 +1,41 @@
 import type { User } from "@/features/portfolio/types/user"
 
 export const USER: User = {
-  firstName: "Brad",
-  lastName: "Moyetones",
-  displayName: "Brad Moyetones",
-  username: "bradmoyetones",
+  firstName: "TuNombre",
+  lastName: "TuApellido",
+  displayName: "TuNombre TuApellido",
+  username: "tu_usuario",
   gender: "male",
   pronouns: "he/him",
-  bio: "Software Engineer & Creator",
+  bio: "Tu Bio Corta",
   flipSentences: [
-    "Software Engineer",
-    "Creative Developer",
-    "Open Source Enthusiast",
+    "Rol 1",
+    "Rol 2",
+    "Rol 3",
   ],
-  address: "Planet Earth",
+  address: "Tu Ubicacion",
   phoneNumberB64: "", 
   emailB64: "", 
-  website: "https://bradmoyetones.com",
-  jobTitle: "Software Engineer",
+  website: "https://tudominio.com",
+  jobTitle: "Tu Rol Principal",
   jobs: [
     {
-      title: "Software Engineer",
-      company: "Company",
+      title: "Tu Rol",
+      company: "Tu Empresa",
       website: "#",
       experienceId: "current",
     }
   ],
-  about: `- I’m Brad Moyetones — a Software Engineer passionate about web development, design, and user experience.
-- Currently building awesome web applications and expanding my knowledge of modern frameworks like Astro, Next.js, and React.
-`,
-  avatar: "https://avatars.githubusercontent.com/u/1?v=4", // Placeholder avatar
-  avatarSketch: "https://avatars.githubusercontent.com/u/1?v=4",
+  about: "- Sobre mi\\n- Parrafo 1\\n- Parrafo 2\\n",
+  avatar: "/placeholder-avatar.png",
+  avatarSketch: "/placeholder-avatar.png",
   avatarVariants: {},
   ogImage: "",
   namePronunciationUrl: "",
   timeZone: "UTC",
   keywords: [
-    "bradmoyetones",
-    "brad moyetones",
-    "brad",
-    "software engineer",
-    "developer",
+    "keyword1",
+    "keyword2",
   ],
   dateCreated: "2024-01-01",
 }

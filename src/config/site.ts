@@ -4,7 +4,7 @@ import { USER } from "@/features/portfolio/data/user"
 
 export const SITE_INFO = {
   name: USER.displayName,
-  url: "https://brad.moyetones.com",
+  url: "https://tudominio.com",
   ogImage: USER.ogImage,
   description: USER.bio,
   keywords: USER.keywords,
@@ -12,7 +12,7 @@ export const SITE_INFO = {
 
 export const LICENSE = {
   name: "MIT License",
-  url: "https://github.com/brad/portfolio/blob/main/LICENSE",
+  url: "https://github.com/tu_usuario/portfolio/blob/main/LICENSE",
 }
 
 export const META_THEME_COLORS = {
@@ -37,9 +37,9 @@ export const MOBILE_NAV: NavItem[] = [
 
 export const X_HANDLE = SOCIAL.x.handle
 export const GITHUB_USERNAME = SOCIAL.github.handle
-export const SOURCE_CODE_GITHUB_REPO = "bradm/portfolio"
-export const SOURCE_CODE_GITHUB_URL = "https://github.com/bradm/portfolio"
+export const SOURCE_CODE_GITHUB_REPO = "tu_usuario/portfolio"
+export const SOURCE_CODE_GITHUB_URL = "https://github.com/tu_usuario/portfolio"
 
 export const UTM_PARAMS = {
-  utm_source: "brad.portfolio",
+  utm_source: "tu_portfolio",
 }

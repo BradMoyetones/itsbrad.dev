@@ -6,8 +6,7 @@ import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
 import { SOCIAL } from "@/features/portfolio/data/social-links"
 import { BradMark } from "@/components/brad-mark"
 
-const SITE_TITLE = "Brad Moyetones"
-const SITE_SUBTITLE = "Frontend Engineer"
+import { USER } from "@/features/portfolio/data/user"
 
 export function SiteFooterCad() {
   const xLink = SOCIAL.x
@@ -23,9 +22,9 @@ export function SiteFooterCad() {
 
         <div className="relative">
           <div className="screen-line-bottom flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-4 py-3 font-mono text-sm">
-            <span className="font-medium">{SITE_TITLE}</span>
+            <span className="font-medium">{USER.displayName}</span>
             <span className="font-sans text-muted-foreground">
-              {SITE_SUBTITLE}
+              {USER.jobTitle}
             </span>
           </div>
         </div>

@@ -6,6 +6,12 @@ import '@fontsource/caveat';
 import '../styles/globals.css';
 import SiteHeader from '@/components/SiteHeader.astro';
 import { SiteFooterCad } from '@/components/site-footer-cad';
+
+interface Props {
+	title?: string;
+}
+
+const { title = "Portfolio" } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -15,7 +21,7 @@ import { SiteFooterCad } from '@/components/site-footer-cad';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Brad Portfolio</title>
+		<title>{title}</title>
 		<script is:inline>
 			const getThemePreference = () => {
 				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {

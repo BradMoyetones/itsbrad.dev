@@ -10,7 +10,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import type { Activity } from "@/registry/components/contribution-graph"
+import type { Activity } from "@/components/ui/contribution-graph"
 import {
   ContributionGraph,
   ContributionGraphBlock,
@@ -18,7 +18,7 @@ import {
   ContributionGraphFooter,
   ContributionGraphLegend,
   ContributionGraphTotalCount,
-} from "@/registry/components/contribution-graph"
+} from "@/components/ui/contribution-graph"
 import { SOCIAL } from "@/features/portfolio/data/social-links"
 
 export function GitHubContributionGraph({

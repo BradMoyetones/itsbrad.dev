@@ -9,9 +9,10 @@ import { TechStack } from '@/features/portfolio/components/tech-stack';
 import { Experiences } from '@/features/portfolio/components/experiences';
 import { Education } from '@/features/portfolio/components/education';
 import { Projects } from '@/features/portfolio/components/projects';
+import { SITE_INFO } from '@/config/site';
 ---
 
-<Layout title="Brad Moyetones - Frontend Engineer">
+<Layout title={SITE_INFO.name + " - " + SITE_INFO.description}>
   <div class="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
     <div class="mx-auto md:max-w-3xl">
       <ProfileHeader client:load />
