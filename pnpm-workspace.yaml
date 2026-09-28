@@ -4,6 +4,7 @@ allowBuilds:
   protobufjs: false
   puppeteer: false
   sharp: false
+  unrs-resolver: true
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - shadcn
