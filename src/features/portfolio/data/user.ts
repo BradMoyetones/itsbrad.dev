@@ -40,7 +40,12 @@ Tengo una especial atención por los detalles y una fuerte obsesión con el dise
 Una prueba de esta filosofía es este mismo portafolio, inspirado fuertemente en el trabajo de Chánh Đại, pero adaptado a mi propia identidad, necesidades y forma de trabajar.`,
   avatar: "/avatar.jpg",
   avatarSketch: "/avatar.jpg",
-  avatarVariants: {},
+  avatarVariants: {
+    lightOff: "/avatar.jpg",
+    lightOn: "/avatar.jpg",
+    darkOff: "/avatar.jpg",
+    darkOn: "/avatar.jpg",
+  },
   ogImage: "/avatar.jpg",
   namePronunciationUrl: "",
   timeZone: "America/Bogota",
