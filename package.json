@@ -72,5 +72,10 @@
     "unist-builder": "3.0.0",
     "unist-util-visit": "^5.0.0",
     "vitest": "^5.0.2"
-  }
+  },
+  "engines": {
+    "node": ">=22.x",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@12.4.2"
 }
