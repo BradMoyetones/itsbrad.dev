@@ -1,6 +1,7 @@
 import { CollapsibleList } from "@/components/collapsible-list"
 import {
   Panel,
+  PanelContent,
   PanelHeader,
   PanelTitle,
   PanelTitleSup,
@@ -23,12 +24,18 @@ export function Recognition() {
         </PanelTitle>
       </PanelHeader>
 
-      <CollapsibleList
-        items={RECOGNITION}
-        max={6}
-        keyExtractor={(entry) => entry.key}
-        renderItem={(entry) => <RecognitionItem entry={entry} />}
-      />
+      {RECOGNITION.length > 0 ? (
+        <CollapsibleList
+          items={RECOGNITION}
+          max={6}
+          keyExtractor={(entry) => entry.key}
+          renderItem={(entry) => <RecognitionItem entry={entry} />}
+        />
+      ) : (
+        <PanelContent className="flex flex-col">
+          <p className="text-muted-foreground p-4">Recognition coming soon...</p>
+        </PanelContent>
+      )}
     </Panel>
   )
 }

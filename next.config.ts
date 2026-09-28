@@ -24,11 +24,50 @@ const nextConfig: NextConfig = {
   compiler:
     process.env.NODE_ENV === "production"
       ? {
-          removeConsole: {
-            exclude: ["error"],
-          },
-        }
+        removeConsole: {
+          exclude: ["error"],
+        },
+      }
       : undefined,
+  async redirects() {
+    return [
+      {
+        source: "/llms-full.txt",
+        destination: "/llms.txt",
+        permanent: true,
+      },
+      {
+        source: "/:section(blog)/:slug.mdx",
+        destination: "/:section/:slug.md",
+        permanent: true,
+      },
+    ]
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/:section(blog)/:slug.md",
+          destination: "/doc.md/:slug",
+        },
+        {
+          source: "/index.md",
+          destination: "/llms.txt",
+        },
+        {
+          source: "/",
+          destination: "/llms.txt",
+          has: [
+            {
+              type: "header",
+              key: "accept",
+              value: "(?<accept>.*text/markdown.*)",
+            },
+          ],
+        },
+      ],
+    }
+  }
 };
 
 export default nextConfig;

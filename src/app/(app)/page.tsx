@@ -58,6 +58,7 @@ export default function HomePage() {
           <Separator />
 
           <Recognition />
+          <Separator />
         </div>
       </div>
     </>
