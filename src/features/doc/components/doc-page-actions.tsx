@@ -26,7 +26,7 @@ import {
   SciraIcon,
   V0Icon,
 } from "@/components/icons"
-import { CopyStateIcon } from "@/registry/components/copy-button"
+import { CopyStateIcon } from "@/components/copy-button"
 
 const cache = new Map<string, string>()
 
@@ -204,7 +204,6 @@ export function ViewOptions({
         className="w-fit"
         align="start"
         alignOffset={-6}
-        collisionPadding={16}
         finalFocus={false}
       >
         {items.map(({ title, href, icon: Icon }) => (

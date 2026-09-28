@@ -1,10 +1,7 @@
 "use client"
 
 import React, { useCallback, useEffect, useMemo, useState } from "react"
-import { copyToClipboardWithEvent } from "@/utils/copy"
 import { useRouter } from "@bprogress/next/app"
-import { PenTool03Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
 import { useTiks } from "@rexa-developer/tiks/react"
 import {
   AwardIcon,
@@ -13,18 +10,13 @@ import {
   BriefcaseBusinessIcon,
   CornerDownLeftIcon,
   DownloadIcon,
-  FileTextIcon,
   GraduationCapIcon,
   LayersIcon,
-  LineChartIcon,
   MonitorIcon,
   MoonStarIcon,
-  QuoteIcon,
-  RssIcon,
   SquareDashedIcon,
   SunMediumIcon,
   TextInitialIcon,
-  TypeIcon,
 } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useHotkeys } from "react-hotkeys-hook"
@@ -50,10 +42,8 @@ import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
 
 import { BradMark, getMarkSVG } from "./brad-mark"
 import {
-  FavouriteIcon,
   GridViewIcon,
   NewsIcon,
-  ReactIcon,
   SearchIcon,
 } from "./icons"
 import { Button } from "./ui/button"
@@ -63,8 +53,6 @@ type CommandKind =
   | "command"
   | "page"
   | "link"
-  | "component"
-  | "block"
   | "bookmark"
 
 type CommandLinkItem = {
@@ -156,13 +144,6 @@ const OTHER_LINK_ITEMS: CommandLinkItem[] = [
     kind: "command",
     icon: <DownloadIcon />,
   },
-  {
-    title: "llms.txt",
-    href: "/llms.txt",
-    kind: "link",
-    icon: <FileTextIcon />,
-    openInNewTab: true,
-  },
 ]
 
 export function CommandMenu({
@@ -215,7 +196,6 @@ export function CommandMenu({
   const handleCopyText = useCallback(
     (text: string, message: string) => {
       setOpen(false)
-      copyToClipboardWithEvent(text)
       toast.add({ type: "success", title: message })
       tiksSuccess()
     },
@@ -226,7 +206,6 @@ export function CommandMenu({
     (theme: "light" | "dark" | "system") => () => {
       click()
       setOpen(false)
-
       setTheme(theme)
     },
     [click, setTheme]
@@ -243,34 +222,6 @@ export function CommandMenu({
         ),
     [docs]
   )
-
-  const componentsGroup = useMemo(() => {
-    if (!components || components.length === 0) {
-      return null
-    }
-
-    return (
-      <CommandGroup heading="Components">
-        {components.map((component) => {
-          return (
-            <CommandMenuItem
-              key={component.slug}
-              keywords={["component"]}
-              onHighlight={() => {
-                setSelectedCommandKind("component")
-              }}
-              onSelect={() => {
-                handleOpenLink(`/components/${component.slug}`)
-              }}
-            >
-              <ComponentIcon slug={component.slug} />
-              <p className="line-clamp-1">{component.title}</p>
-            </CommandMenuItem>
-          )
-        })}
-      </CommandGroup>
-    )
-  }, [components, handleOpenLink])
 
   const blogLinks = useMemo(
     () =>
@@ -350,8 +301,6 @@ export function CommandMenu({
               onLinkSelect={handleOpenLink}
             />
 
-            {componentsGroup}
-
             <CommandLinkGroup
               heading="Blog"
               links={blogLinks}
@@ -388,6 +337,16 @@ export function CommandMenu({
               >
                 <SquareDashedIcon />
                 Brand Guidelines
+              </CommandMenuItem>
+
+              <CommandMenuItem onHighlight={handleCommandHighlight} asChild>
+                <a
+                  href="https://assets.chanhdai.com/chanhdai-brand.zip"
+                  download
+                >
+                  <DownloadIcon />
+                  Download Brand Assets
+                </a>
               </CommandMenuItem>
             </CommandGroup>
 
@@ -560,8 +519,6 @@ const ENTER_ACTION_LABELS: Record<CommandKind, string> = {
   command: "Run command",
   page: "Go to page",
   link: "Open link",
-  component: "Go to component",
-  block: "Go to block",
   bookmark: "Open bookmark",
 }
 
