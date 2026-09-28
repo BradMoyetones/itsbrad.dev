@@ -49,7 +49,7 @@ export function ExperiencePositionItem({
           <h4 className="flex-1 font-medium text-balance">{position.title}</h4>
 
           <div className="shrink-0 text-muted-foreground group-data-disabled:hidden [&_svg]:h-lh [&_svg]:w-4">
-            <CollapsibleChevronsUpDownIcon  />
+            <CollapsibleChevronsUpDownIcon duration={0.15} />
           </div>
         </div>
 

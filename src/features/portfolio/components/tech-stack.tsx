@@ -1,7 +1,7 @@
 import { TECH_STACK } from "../data/tech-stack"
 import type { TechStack as TechStackType } from "../types/tech-stack"
 import { Panel, PanelHeader, PanelTitle } from "./panel"
-
+import { PanelTitleCopy } from "./panel-title-copy"
 
 const ID = "stack"
 
@@ -11,6 +11,7 @@ export function TechStack() {
       <PanelHeader>
         <PanelTitle>
           <a href={`#${ID}`}>Stack</a>
+          <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>
 

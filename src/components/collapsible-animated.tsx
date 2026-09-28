@@ -1,6 +1,6 @@
 "use client"
 
-import React, { createContext, useContext, useEffect, useRef, useState, useImperativeHandle } from "react"
+import { createContext, useContext, useEffect, useRef, useState } from "react"
 
 import { Collapsible as CollapsibleRoot } from "@/components/ui/collapsible"
 import type {
@@ -11,8 +11,8 @@ import { ChevronDownIcon } from "@/components/animated-icons/chevron-down-icon"
 import type {
   ChevronsUpDownIconHandle,
   ChevronsUpDownIconProps,
-} from "@/components/animated-icons/chevrons-up-down-icon"
-import { ChevronsUpDownIcon } from "@/components/animated-icons/chevrons-up-down-icon"
+} from "@/components/chevrons-up-down-icon"
+import { ChevronsUpDownIcon } from "@/components/chevrons-up-down-icon"
 
 type CollapsibleContextType = {
   open: boolean

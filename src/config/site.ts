@@ -1,10 +1,12 @@
+import type { Route } from "next"
+
 import type { NavItem } from "@/types/nav"
 import { SOCIAL } from "@/features/portfolio/data/social-links"
 import { USER } from "@/features/portfolio/data/user"
 
 export const SITE_INFO = {
   name: USER.displayName,
-  url: "https://itsbrad.dev",
+  url: process.env.NEXT_PUBLIC_APP_URL || "https://itsbrad.dev",
   ogImage: USER.ogImage,
   description: USER.bio,
   keywords: USER.keywords,
@@ -12,7 +14,7 @@ export const SITE_INFO = {
 
 export const LICENSE = {
   name: "MIT License",
-  url: "https://github.com/BradMoyetones/portfolio/blob/main/LICENSE",
+  url: "https://github.com/BradMoyetones/itsbrad.dev/blob/main/LICENSE",
 }
 
 export const META_THEME_COLORS = {
@@ -20,14 +22,14 @@ export const META_THEME_COLORS = {
   dark: "#09090b",
 }
 
-export const MAIN_NAV: NavItem[] = [
+export const MAIN_NAV: NavItem<Route>[] = [
   {
     title: "Blog",
     href: "/blog",
-  }
+  },
 ]
 
-export const MOBILE_NAV: NavItem[] = [
+export const MOBILE_NAV: NavItem<Route>[] = [
   {
     title: "Home",
     href: "/",
@@ -35,11 +37,12 @@ export const MOBILE_NAV: NavItem[] = [
   ...MAIN_NAV,
 ]
 
-export const INSTAGRAM_HANDLE = SOCIAL.instagram.handle
 export const GITHUB_USERNAME = SOCIAL.github.handle
-export const SOURCE_CODE_GITHUB_REPO = "BradMoyetones/portfolio"
-export const SOURCE_CODE_GITHUB_URL = "https://github.com/BradMoyetones/portfolio"
+export const SOURCE_CODE_GITHUB_REPO = "BradMoyetones/itsbrad.dev"
+export const SOURCE_CODE_GITHUB_URL = "https://github.com/BradMoyetones/itsbrad.dev"
+
+export const SPONSORSHIP_URL = "https://github.com/sponsors/BradMoyetones"
 
 export const UTM_PARAMS = {
-  utm_source: "brad.portfolio",
+  utm_source: "itsbrad.dev",
 }

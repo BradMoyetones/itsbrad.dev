@@ -1,10 +1,21 @@
-import ReactMarkdown from 'react-markdown'
-import { cn } from "@/lib/utils"
+import { MarkdownAsync } from "react-markdown"
+import rehypeExternalLinks from "rehype-external-links"
+import rehypeRaw from "rehype-raw"
+import remarkGfm from "remark-gfm"
 
-export function Markdown({ children, className }: { children: string, className?: string }) {
+import { UTM_PARAMS } from "@/config/site"
+import { rehypeAddQueryParams } from "@/lib/rehype-add-query-params"
+
+export function Markdown(props: React.ComponentProps<typeof MarkdownAsync>) {
   return (
-    <div className={cn("prose dark:prose-invert", className)}>
-      <ReactMarkdown>{children}</ReactMarkdown>
-    </div>
+    <MarkdownAsync
+      remarkPlugins={[remarkGfm]}
+      rehypePlugins={[
+        rehypeRaw,
+        [rehypeExternalLinks, { target: "_blank", rel: "nofollow noopener" }],
+        [rehypeAddQueryParams, UTM_PARAMS],
+      ]}
+      {...props}
+    />
   )
 }

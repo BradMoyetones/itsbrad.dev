@@ -89,7 +89,7 @@ export function ProjectItem({
           </Tooltip>
 
           <div className="shrink-0 text-muted-foreground [&_svg]:size-4">
-            <CollapsibleChevronsUpDownIcon  />
+            <CollapsibleChevronsUpDownIcon duration={0.15} />
           </div>
         </div>
       </div>
