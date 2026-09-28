@@ -1,5 +1,8 @@
 import React from "react"
-import type { NavItem as NavItemType } from "@/types/nav"
+import type { Route } from "next"
+import Link from "next/link"
+
+import type { NavItem } from "@/types/nav"
 import { cn } from "@/lib/utils"
 
 export function Nav({
@@ -8,7 +11,7 @@ export function Nav({
   className,
   exactMatch = false,
 }: {
-  items: NavItemType[]
+  items: NavItem<Route>[]
   activeId?: string
   className?: string
   exactMatch?: boolean
@@ -27,25 +30,25 @@ export function Nav({
               : activeId?.startsWith(href))
 
         return (
-          <NavItemComponent
+          <NavItem
             key={href}
             href={href}
             aria-current={isActive ? "page" : undefined}
           >
             {title}
-          </NavItemComponent>
+          </NavItem>
         )
       })}
     </nav>
   )
 }
 
-export function NavItemComponent({
+export function NavItem({
   className,
   ...props
-}: React.ComponentProps<"a">) {
+}: React.ComponentProps<typeof Link>) {
   return (
-    <a
+    <Link
       className={cn(
         "text-sm font-medium tracking-wide text-muted-foreground transition-[color] hover:text-foreground aria-[current=page]:text-foreground",
         className

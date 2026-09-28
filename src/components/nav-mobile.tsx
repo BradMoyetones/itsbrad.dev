@@ -1,6 +1,10 @@
 "use client"
 
-import { useCallback, useState, useEffect } from "react"
+import { useCallback, useState } from "react"
+import type { Route } from "next"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+
 import type { NavItem } from "@/types/nav"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/components/ui/button"
@@ -10,14 +14,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export function NavMobile({ items }: { items: NavItem[] }) {
+export function NavMobile({ items }: { items: NavItem<Route>[] }) {
   const [open, setOpen] = useState(false)
-  const isDesktop = useMediaQuery("(min-width: 40rem)") // sm breakpoint
-  const [pathname, setPathname] = useState("")
 
-  useEffect(() => {
-    setPathname(window.location.pathname)
-  }, [])
+  const isDesktop = useMediaQuery("(min-width: 40rem)") // sm breakpoint
+
+  const pathname = usePathname()
 
   const handleOpenChange = useCallback((open: boolean) => {
     setOpen(open)
@@ -47,7 +49,7 @@ export function NavMobile({ items }: { items: NavItem[] }) {
                 : pathname?.startsWith(link.href))
 
             return (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
@@ -55,7 +57,7 @@ export function NavMobile({ items }: { items: NavItem[] }) {
                 onClick={() => handleOpenChange(false)}
               >
                 {link.title}
-              </a>
+              </Link>
             )
           })}
         </div>

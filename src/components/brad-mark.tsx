@@ -16,3 +16,7 @@ export function BradMark(props: React.ComponentProps<'svg'>) {
         </svg>
     );
 }
+
+export function getMarkSVG() {
+    return `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 156 80"><path d="M75.5195 80V0H91.5195V16H107.52V32H123.52V48H107.52V32H91.5195V80H75.5195ZM139.52 80V32H123.52V16H139.52V0H155.52V80H139.52Z" fill="currentColor"/><path d="M0 80V0H48V16H64V64H48V80H0ZM16 32H47.36V16H16V32ZM16 64H47.36V48H16V64Z" fill="currentColor"/></svg>`
+}

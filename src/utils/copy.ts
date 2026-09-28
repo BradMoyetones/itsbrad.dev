@@ -7,6 +7,6 @@ export const copyText = async (text: string) => {
   }
 }
 
-export function copyToClipboardWithEvent(value: string, event?: any) {
+export function copyToClipboardWithEvent(value: string) {
   return copyText(value)
 }

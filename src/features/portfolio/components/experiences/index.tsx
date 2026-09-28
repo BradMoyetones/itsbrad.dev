@@ -11,7 +11,7 @@ import {
   PanelHeader,
   PanelTitle,
 } from "@/features/portfolio/components/panel"
-
+import { PanelTitleCopy } from "@/features/portfolio/components/panel-title-copy"
 import { EXPERIENCES } from "@/features/portfolio/data/experiences"
 import type { Experience } from "@/features/portfolio/types/experiences"
 
@@ -24,7 +24,10 @@ export function Experiences() {
   return (
     <Panel id={ID}>
       <PanelHeader>
-        <PanelTitle><a href={`#${ID}`}>Experience</a></PanelTitle>
+        <PanelTitle>
+          <a href={`#${ID}`}>Experience</a>
+          <PanelTitleCopy id={ID} />
+        </PanelTitle>
       </PanelHeader>
 
       <div className="px-4">
