@@ -62,7 +62,7 @@ export function GitHubContributionGraph({
               />
               <TooltipContent className="font-sans">
                 <p>
-                  {activity.count} contribution{activity.count > 1 ? "s" : null}{" "}
+                  {activity.count} contribution{activity.count > 1 || activity.count === 0 ? "s" : null}{" "}
                   on {format(parseISO(activity.date), "d MMM yyyy")}
                 </p>
               </TooltipContent>
@@ -78,7 +78,7 @@ export function GitHubContributionGraph({
                   Fig. 2.
                 </span>
                 {formatNumber(totalCount)} contributions,{" "}
-                {format(parseISO(data[0].date), "d MMM yyyy")} –{" "}
+                {format(parseISO(data[0].date), "d MMM yyyy")} {" "}
                 {format(parseISO(data[data.length - 1].date), "d MMM yyyy")}.
                 Source:{" "}
                 <a
